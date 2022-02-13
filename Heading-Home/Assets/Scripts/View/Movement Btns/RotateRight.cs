@@ -22,9 +22,14 @@ namespace Assets.Scripts.View.Movement_Btns
 
         private void Update()
         {
+            CheckRightBtnPressed();
+        }
+
+        private void CheckRightBtnPressed()
+        {
             if (_isPressed)
             {
-                _playerSpaceship.ProcessRightRotation();
+                _playerSpaceship.RightRotation();
             }
         }
 

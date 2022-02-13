@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.View.Movement_Btns
 {
@@ -22,9 +23,19 @@ namespace Assets.Scripts.View.Movement_Btns
 
         private void Update()
         {
+            CheckThrustBtnPressed();
+        }
+
+        private void CheckThrustBtnPressed()
+        {
             if (_isPressed)
             {
                 _playerSpaceship.ProcessThrust();
+                _playerSpaceship.CheckSoundCondition();
+            }
+            else
+            {
+                _playerSpaceship.AudioSource.Stop();
             }
         }
 

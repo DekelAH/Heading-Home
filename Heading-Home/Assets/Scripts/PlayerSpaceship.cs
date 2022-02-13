@@ -19,28 +19,46 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private Rigidbody _rigidBody;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+
     #endregion
 
     #region Methods
 
     private void Start()
     {
-        
+
     }
 
     public void ProcessThrust()
     {
-        _rigidBody.AddRelativeForce(Vector3.up * _thrustSpeed * Time.deltaTime);
+        _rigidBody.AddRelativeForce(_thrustSpeed * Time.deltaTime * Vector3.up);
     }
 
-    public void ProcessLeftRotation()
+    public void LeftRotation()
     {
-        _rigidBody.AddRelativeForce(Vector3.left * _rotationSpeed * Time.deltaTime);
-    }   
+        ProcessRotation(_rotationSpeed);
+    }
 
-    public void ProcessRightRotation()
+    public void RightRotation()
     {
-        _rigidBody.AddRelativeForce(Vector3.right * _rotationSpeed * Time.deltaTime);
+        ProcessRotation(-_rotationSpeed);
+    }
+
+    private void ProcessRotation(float rotationSpeed)
+    {
+        _rigidBody.freezeRotation = true;
+        transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.forward);
+        _rigidBody.freezeRotation = false;
+    }
+
+    public void CheckSoundCondition()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.Play();
+        }
     }
 
     #endregion
@@ -50,6 +68,7 @@ public class PlayerSpaceship : MonoBehaviour
     public float ThrustSpeed => _thrustSpeed;
     public float RotationSpeed => _rotationSpeed;
     public int Fuel => _fuel;
+    public AudioSource AudioSource => _audioSource;
 
     #endregion
 }

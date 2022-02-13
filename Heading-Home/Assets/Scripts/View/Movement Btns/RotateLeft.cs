@@ -21,7 +21,15 @@ namespace Assets.Scripts.View.Movement_Btns
         #region Methods
         private void Update()
         {
-            _playerSpaceship.ProcessLeftRotation();
+            CheckLeftBtnPressed();
+        }
+
+        private void CheckLeftBtnPressed()
+        {
+            if (_isPressed)
+            {
+                _playerSpaceship.LeftRotation();
+            }
         }
 
         public void OnPointerDown(PointerEventData eventData)
