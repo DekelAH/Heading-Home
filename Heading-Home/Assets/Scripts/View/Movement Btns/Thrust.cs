@@ -31,7 +31,7 @@ namespace Assets.Scripts.View.Movement_Btns
             if (_isPressed)
             {
                 _playerSpaceship.ProcessThrust();
-                _playerSpaceship.CheckSoundCondition();
+                _playerSpaceship.CheckThrustSoundCondition();
             }
             else
             {

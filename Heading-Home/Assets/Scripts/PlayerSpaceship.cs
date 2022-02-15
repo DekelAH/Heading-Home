@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpaceship : MonoBehaviour
@@ -20,6 +17,15 @@ public class PlayerSpaceship : MonoBehaviour
     private Rigidbody _rigidBody;
 
     [SerializeField]
+    private AudioClip _thrustAudio;
+
+    [SerializeField]
+    private AudioClip _crashAudio;
+
+    [SerializeField]
+    private AudioClip _successAudio;
+
+    [SerializeField]
     private AudioSource _audioSource;
 
     #endregion
@@ -29,6 +35,13 @@ public class PlayerSpaceship : MonoBehaviour
     private void Start()
     {
 
+    }
+
+    private void ProcessRotation(float rotationSpeed)
+    {
+        _rigidBody.freezeRotation = true;
+        transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.forward);
+        _rigidBody.freezeRotation = false;
     }
 
     public void ProcessThrust()
@@ -46,18 +59,27 @@ public class PlayerSpaceship : MonoBehaviour
         ProcessRotation(-_rotationSpeed);
     }
 
-    private void ProcessRotation(float rotationSpeed)
-    {
-        _rigidBody.freezeRotation = true;
-        transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.forward);
-        _rigidBody.freezeRotation = false;
-    }
-
-    public void CheckSoundCondition()
+    public void CheckThrustSoundCondition()
     {
         if (!_audioSource.isPlaying)
         {
-            _audioSource.Play();
+            _audioSource.PlayOneShot(_thrustAudio);
+        }
+    }
+
+    public void CheckCrashSoundCondition()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(_crashAudio);
+        }
+    }
+
+    public void CheckSuccessSoundCondition()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(_successAudio);
         }
     }
 

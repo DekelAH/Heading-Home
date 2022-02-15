@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -7,10 +6,29 @@ namespace Assets.Scripts
     {
         #region Methods
 
+        private int GetActiveSceneIndex()
+        {
+            var getCurrentScene = SceneManager.GetActiveScene().buildIndex;
+            return getCurrentScene;
+        }
+
         public void ReloadLevel()
         {
-            var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            var currentSceneIndex = GetActiveSceneIndex();
             SceneManager.LoadScene(currentSceneIndex);
+        }
+
+        public void NextLevel()
+        {
+            var currentSceneIndex = GetActiveSceneIndex();
+            var nextSceneIndex = ++currentSceneIndex;
+
+            if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+            {
+                nextSceneIndex = 0;
+            }
+
+            SceneManager.LoadScene(nextSceneIndex);
         }
 
         #endregion

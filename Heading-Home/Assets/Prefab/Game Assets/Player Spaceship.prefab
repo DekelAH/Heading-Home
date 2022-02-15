@@ -131,6 +131,9 @@ MonoBehaviour:
   _rotationSpeed: 100
   _fuel: 0
   _rigidBody: {fileID: 5319402154731610142}
+  _thrustAudio: {fileID: 8300000, guid: 21d88f2f256e8b74786cf620d8f512d7, type: 3}
+  _crashAudio: {fileID: 8300000, guid: 17de9248e335eb44ebb3f6e0258f51b2, type: 3}
+  _successAudio: {fileID: 8300000, guid: 136c71141cfab5b4287adab6a17e4fde, type: 3}
   _audioSource: {fileID: 3160948652255581309}
 --- !u!82 &3160948652255581309
 AudioSource:
@@ -142,7 +145,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 21d88f2f256e8b74786cf620d8f512d7, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -240,3 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae55862e777ca6a4eb5ec754fd029259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delayAfterCrash: 3
+  _delayAfterFinish: 3
+  _playerSpaceship: {fileID: 3160948652255581308}
+  _rotateLeft: {fileID: 0}
+  _rotateRight: {fileID: 0}
+  _thrust: {fileID: 0}
