@@ -28,14 +28,33 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
 
+    [SerializeField]
+    private ParticleSystem _successEffect;
+
+    [SerializeField]
+    private ParticleSystem _crashEffect;
+
+    [SerializeField]
+    private ParticleSystem _rocketFlame01;
+
+    [SerializeField]
+    private ParticleSystem _rocketFlame02;
+
+    [SerializeField]
+    private ParticleSystem _rocketFlame03;
+
+    [SerializeField]
+    private ParticleSystem _rocketFlame04;
+
+    [SerializeField]
+    private ParticleSystem _leftRocketFlame;
+
+    [SerializeField]
+    private ParticleSystem _rightRocketFlame;
+
     #endregion
 
     #region Methods
-
-    private void Start()
-    {
-
-    }
 
     private void ProcessRotation(float rotationSpeed)
     {
@@ -81,6 +100,54 @@ public class PlayerSpaceship : MonoBehaviour
         {
             _audioSource.PlayOneShot(_successAudio);
         }
+    }
+
+    public void TriggerRocketFlames()
+    {
+        _rocketFlame01.Play();
+        _rocketFlame02.Play();
+        _rocketFlame03.Play();
+        _rocketFlame04.Play();
+    }
+
+    public void StopRocketFlames()
+    {
+        _rocketFlame01.Stop();
+        _rocketFlame02.Stop();
+        _rocketFlame03.Stop();
+        _rocketFlame04.Stop();
+    }
+
+    public void TriggerRightFlame()
+    {
+        if (!_rightRocketFlame.isPlaying)
+        {
+            _rightRocketFlame.Play();
+        }
+    }
+
+    public void StopSideFlames()
+    {
+        _rightRocketFlame.Stop();
+        _leftRocketFlame.Stop();
+    }
+
+    public void TriggerLeftFlame()
+    {
+        if (!_leftRocketFlame.isPlaying)
+        {
+            _leftRocketFlame.Play();
+        }
+    }
+
+    public void TriggerSuccessEffect()
+    {
+        _successEffect.Play();
+    }
+
+    public void TriggerCrashEffect()
+    {
+        _crashEffect.Play();
     }
 
     #endregion

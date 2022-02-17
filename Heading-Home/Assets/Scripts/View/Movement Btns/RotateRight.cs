@@ -30,6 +30,11 @@ namespace Assets.Scripts.View.Movement_Btns
             if (_isPressed)
             {
                 _playerSpaceship.RightRotation();
+                _playerSpaceship.TriggerRightFlame();
+            }
+            else
+            {
+                _playerSpaceship.StopSideFlames();
             }
         }
 

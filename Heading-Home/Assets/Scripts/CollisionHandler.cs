@@ -66,27 +66,34 @@ public class CollisionHandler : MonoBehaviour
         _isIdle = true;
         _playerSpaceship.AudioSource.Stop();
         _playerSpaceship.CheckCrashSoundCondition();
+        _playerSpaceship.StopSideFlames();
+        _playerSpaceship.StopRocketFlames();
+        _playerSpaceship.TriggerCrashEffect();
         DisableBtns();
-        StartCoroutine(WaitSecondsToReloadLevelCoroutine());
+        StartCoroutine(ReloadLevelCoroutine());
     }
 
-    private IEnumerator WaitSecondsToReloadLevelCoroutine()
+    private IEnumerator ReloadLevelCoroutine()
     {
 
         yield return new WaitForSeconds(_delayAfterCrash);
 
         _sceneHandler.ReloadLevel();
     }
+
     private void StartFinishSequence()
     {
         _isIdle = true;
         _playerSpaceship.AudioSource.Stop();
         _playerSpaceship.CheckSuccessSoundCondition();
+        _playerSpaceship.StopSideFlames();
+        _playerSpaceship.StopRocketFlames();
+        _playerSpaceship.TriggerSuccessEffect();
         DisableBtns();
-        StartCoroutine(WaitSecondsToNextLevelCoroutine());
+        StartCoroutine(NextLevelCoroutine());
     }
 
-    private IEnumerator WaitSecondsToNextLevelCoroutine()
+    private IEnumerator NextLevelCoroutine()
     {
         yield return new WaitForSeconds(_delayAfterFinish);
 

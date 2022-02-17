@@ -32,10 +32,12 @@ namespace Assets.Scripts.View.Movement_Btns
             {
                 _playerSpaceship.ProcessThrust();
                 _playerSpaceship.CheckThrustSoundCondition();
+                _playerSpaceship.TriggerRocketFlames();
             }
             else
             {
                 _playerSpaceship.AudioSource.Stop();
+                _playerSpaceship.StopRocketFlames();
             }
         }
 
