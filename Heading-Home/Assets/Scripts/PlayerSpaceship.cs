@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpaceship : MonoBehaviour
@@ -54,6 +55,8 @@ public class PlayerSpaceship : MonoBehaviour
 
     #endregion
 
+    private readonly List<Transform> _childrenTransform = new List<Transform>();
+
     #region Methods
 
     private void ProcessRotation(float rotationSpeed)
@@ -61,6 +64,20 @@ public class PlayerSpaceship : MonoBehaviour
         _rigidBody.freezeRotation = true;
         transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.forward);
         _rigidBody.freezeRotation = false;
+    }
+
+    public void PlayerExplosion()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            _childrenTransform.Add(transform.GetChild(i));
+        }
+
+        foreach (var child in _childrenTransform)
+        {
+            child.gameObject.AddComponent<Rigidbody>();
+            child.gameObject.AddComponent<MeshCollider>().convex = true;
+        }
     }
 
     public void ProcessThrust()

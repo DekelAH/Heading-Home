@@ -28,6 +28,14 @@ public class CollisionHandler : MonoBehaviour
 
     #endregion
 
+    #region Consts
+
+    private const string FRIENDLYTAG = "Friendly";
+    private const string FINISHTAG = "Finish";
+    private const string FUELTAG = "Fuel";
+
+    #endregion
+
     #region Fields
 
     private readonly SceneHandler _sceneHandler = new SceneHandler();
@@ -46,13 +54,13 @@ public class CollisionHandler : MonoBehaviour
 
         switch (collision.gameObject.tag)
         {
-            case "Friendly":
+            case FRIENDLYTAG:
                 Debug.Log("Friendly!!!!");
                 break;
-            case "Finish":
+            case FINISHTAG:
                 StartFinishSequence();
                 break;
-            case "Fuel":
+            case FUELTAG:
                 Debug.Log("Fuel!!!!");
                 break;
             default:
@@ -65,6 +73,7 @@ public class CollisionHandler : MonoBehaviour
     {
         _isIdle = true;
         _playerSpaceship.AudioSource.Stop();
+        _playerSpaceship.PlayerExplosion();
         _playerSpaceship.CheckCrashSoundCondition();
         _playerSpaceship.StopSideFlames();
         _playerSpaceship.StopRocketFlames();
