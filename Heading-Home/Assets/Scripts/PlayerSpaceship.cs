@@ -55,7 +55,11 @@ public class PlayerSpaceship : MonoBehaviour
 
     #endregion
 
+    #region Fields
+
     private readonly List<Transform> _childrenTransform = new List<Transform>();
+
+    #endregion
 
     #region Methods
 

@@ -1,8 +1,8 @@
 using Assets.Scripts;
+using Assets.Scripts.Model;
 using Assets.Scripts.View.Movement_Btns;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -25,6 +25,9 @@ public class CollisionHandler : MonoBehaviour
 
     [SerializeField]
     private Thrust _thrust;
+
+    [SerializeField]
+    private PlayerModel _playerModel;
 
     #endregion
 
@@ -61,7 +64,7 @@ public class CollisionHandler : MonoBehaviour
                 StartFinishSequence();
                 break;
             case FUELTAG:
-                Debug.Log("Fuel!!!!");
+                _playerModel.AddFuel(10);
                 break;
             default:
                 StartCrashSequence();
