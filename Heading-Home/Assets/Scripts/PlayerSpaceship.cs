@@ -1,3 +1,4 @@
+using Assets.Scripts.Model;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,9 +11,6 @@ public class PlayerSpaceship : MonoBehaviour
 
     [SerializeField]
     private float _rotationSpeed;
-
-    [SerializeField]
-    private int _fuel;
 
     [SerializeField]
     private Rigidbody _rigidBody;
@@ -53,6 +51,9 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private ParticleSystem _rightRocketFlame;
 
+    [SerializeField]
+    private PlayerModel _playerModel;
+
     #endregion
 
     #region Fields
@@ -63,11 +64,28 @@ public class PlayerSpaceship : MonoBehaviour
 
     #region Methods
 
+    private void Update()
+    {
+        OutOfFuel();
+    }
+
     private void ProcessRotation(float rotationSpeed)
     {
         _rigidBody.freezeRotation = true;
         transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.forward);
         _rigidBody.freezeRotation = false;
+    }
+
+    public void OutOfFuel()
+    {
+        if (_playerModel.Fuel <= 0)
+        {
+            var collisionHandler = GetComponent<CollisionHandler>();
+            collisionHandler.DisableBtns();
+            StopSideFlames();
+            StopRocketFlames();
+            _audioSource.Stop();
+        }
     }
 
     public void PlayerExplosion()
@@ -177,7 +195,6 @@ public class PlayerSpaceship : MonoBehaviour
 
     public float ThrustSpeed => _thrustSpeed;
     public float RotationSpeed => _rotationSpeed;
-    public int Fuel => _fuel;
     public AudioSource AudioSource => _audioSource;
 
     #endregion

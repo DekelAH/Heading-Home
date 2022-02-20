@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Model
 {
-    [CreateAssetMenu(menuName = "Data Models", fileName = "Player Model")]
+    [CreateAssetMenu(menuName = "Data Models/Player Model", fileName = "Player Model")]
     public class PlayerModel : ScriptableObject
     {
         #region Events
@@ -29,8 +29,11 @@ namespace Assets.Scripts.Model
 
         public void WithdrawFuel(int fuelToWithdraw)
         {
-            _fuel -= fuelToWithdraw;
-            FuelChange?.Invoke(_fuel);
+            if (fuelToWithdraw <= _fuel)
+            {
+                _fuel = Mathf.Max(0, _fuel - fuelToWithdraw);
+                FuelChange?.Invoke(_fuel);
+            }
         }
 
         #endregion

@@ -18,9 +18,19 @@ namespace Assets.Scripts
 
         #region Methods
 
+        private void Start()
+        {
+            SetUpParams();
+        }
+
         private void Update()
         {
             UpdateView();
+        }
+
+        private void SetUpParams()
+        {
+            _fuelBar.value = _playerModel.Fuel;
         }
 
         private void OnDestroy()

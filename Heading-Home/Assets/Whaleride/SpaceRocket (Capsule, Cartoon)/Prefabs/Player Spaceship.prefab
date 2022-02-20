@@ -29986,9 +29986,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 4.803581
-  m_Height: 13.499741
+  m_Height: 12.241137
   m_Direction: 1
-  m_Center: {x: -0.01540184, y: 0.03277123, z: 0}
+  m_Center: {x: -0.01540184, y: 0.66209674, z: 0}
 --- !u!54 &7514662138570732919
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30115,7 +30115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _thrustSpeed: 1000
   _rotationSpeed: 100
-  _fuel: 0
   _rigidBody: {fileID: 7514662138570732919}
   _thrustAudio: {fileID: 8300000, guid: 21d88f2f256e8b74786cf620d8f512d7, type: 3}
   _crashAudio: {fileID: 8300000, guid: 17de9248e335eb44ebb3f6e0258f51b2, type: 3}
@@ -30147,6 +30146,8 @@ MonoBehaviour:
   _rotateLeft: {fileID: 0}
   _rotateRight: {fileID: 0}
   _thrust: {fileID: 0}
+  _playerModel: {fileID: 11400000, guid: 726bacc5e04d98f4aa9e1ae6a8e6f335, type: 2}
+  _fuel: {fileID: 0}
 --- !u!1 &9076663853176495768
 GameObject:
   m_ObjectHideFlags: 0
@@ -30363,6 +30364,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436899185823514, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198204746014789312, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198204746014789312, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198204746014789312, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
+      propertyPath: CollisionModule.m_Bounce.scalar
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

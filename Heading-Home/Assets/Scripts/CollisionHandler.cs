@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.Model;
+using Assets.Scripts.View.Items;
 using Assets.Scripts.View.Movement_Btns;
 using System.Collections;
 using UnityEngine;
@@ -28,6 +29,9 @@ public class CollisionHandler : MonoBehaviour
 
     [SerializeField]
     private PlayerModel _playerModel;
+
+    [SerializeField]
+    private Item _fuel;
 
     #endregion
 
@@ -64,12 +68,18 @@ public class CollisionHandler : MonoBehaviour
                 StartFinishSequence();
                 break;
             case FUELTAG:
-                _playerModel.AddFuel(10);
+                FuelCollision();
                 break;
             default:
                 StartCrashSequence();
                 break;
         }
+    }
+
+    private void FuelCollision()
+    {
+        _playerModel.AddFuel(_fuel.Parameter);
+        _fuel.DestroyItem();
     }
 
     private void StartCrashSequence()
@@ -112,7 +122,7 @@ public class CollisionHandler : MonoBehaviour
         _sceneHandler.NextLevel();
     }
 
-    private void DisableBtns()
+    public void DisableBtns()
     {
         _thrust.enabled = false;
         _rotateLeft.enabled = false;
