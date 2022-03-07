@@ -6,6 +6,7 @@ public class PlayerSpaceship : MonoBehaviour
 {
     #region Editor
 
+    [Header("Movement")]
     [SerializeField]
     private float _thrustSpeed;
 
@@ -15,6 +16,7 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private Rigidbody _rigidBody;
 
+    [Header("Audio")]
     [SerializeField]
     private AudioClip _thrustAudio;
 
@@ -27,6 +29,7 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
 
+    [Header("Effects")]
     [SerializeField]
     private ParticleSystem _successEffect;
 

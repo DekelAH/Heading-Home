@@ -37,9 +37,9 @@ public class CollisionHandler : MonoBehaviour
 
     #region Consts
 
-    private const string FRIENDLYTAG = "Friendly";
-    private const string FINISHTAG = "Finish";
-    private const string FUELTAG = "Fuel";
+    private const string FRIENDLY_TAG = "Friendly";
+    private const string FINISH_TAG = "Finish";
+    private const string FUEL_TAG = "Fuel";
 
     #endregion
 
@@ -61,13 +61,13 @@ public class CollisionHandler : MonoBehaviour
 
         switch (collision.gameObject.tag)
         {
-            case FRIENDLYTAG:
+            case FRIENDLY_TAG:
                 Debug.Log("Friendly!!!!");
                 break;
-            case FINISHTAG:
+            case FINISH_TAG:
                 StartFinishSequence();
                 break;
-            case FUELTAG:
+            case FUEL_TAG:
                 FuelCollision();
                 break;
             default:
