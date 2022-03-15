@@ -140,11 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6956174235652383890, guid: 638a25a0a8d9ee045892ecbb0ef38e3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.92
+      value: -25.75
       objectReference: {fileID: 0}
     - target: {fileID: 6956174235652383890, guid: 638a25a0a8d9ee045892ecbb0ef38e3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.1
+      value: 6.9
       objectReference: {fileID: 0}
     - target: {fileID: 6956174235652383890, guid: 638a25a0a8d9ee045892ecbb0ef38e3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1716,7 +1716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1420457684
 Transform:
   m_ObjectHideFlags: 0
@@ -2621,6 +2621,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 929522864}
     m_Modifications:
     - target: {fileID: 3431916399550807512, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807512, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
       propertyPath: _playerModel
       value: 
       objectReference: {fileID: 11400000, guid: 726bacc5e04d98f4aa9e1ae6a8e6f335, type: 2}
@@ -2719,6 +2723,34 @@ PrefabInstance:
     - target: {fileID: 3431916399550807514, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
       propertyPath: m_Name
       value: Up Btn
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807525, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807525, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807525, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807525, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807525, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CheckThrustBtnPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807525, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.MovementView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431916399550807525, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae5aa4c001e224b4ca207a6a0d548513, type: 3}
@@ -2920,6 +2952,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 929522864}
     m_Modifications:
+    - target: {fileID: 4907707500739599961, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907707500739599961, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907707500739599961, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907707500739599961, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907707500739599961, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CheckRightBtnPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907707500739599961, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.MovementView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907707500739599961, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4907707500739599964, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
       propertyPath: m_Name
       value: Turn Right Btn
@@ -3009,6 +3069,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4907707500739599966, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907707500739599966, guid: 54b77fabf587c4f4b888af66aa917626, type: 3}
       propertyPath: _playerSpaceship
       value: 
       objectReference: {fileID: 7514662138570732920}
@@ -3021,6 +3085,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 929522864}
     m_Modifications:
+    - target: {fileID: 5450101434520201394, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450101434520201394, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450101434520201394, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450101434520201394, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450101434520201394, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CheckLeftBtnPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450101434520201394, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.MovementView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450101434520201394, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450101434520201397, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5450101434520201397, guid: 97fae98a9c895bf4a86b57203c276ea2, type: 3}
       propertyPath: _playerSpaceship
       value: 
@@ -3302,10 +3398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 42446749}
     m_Modifications:
-    - target: {fileID: 1686701969, guid: 76e52231725a9a34585e11ecfb38d082, type: 3}
-      propertyPath: m_SpotAngle
-      value: 141.6
-      objectReference: {fileID: 0}
     - target: {fileID: 7514662138570732920, guid: 76e52231725a9a34585e11ecfb38d082, type: 3}
       propertyPath: _successEffect
       value: 

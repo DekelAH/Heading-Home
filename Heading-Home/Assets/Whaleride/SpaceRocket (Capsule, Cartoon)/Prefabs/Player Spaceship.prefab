@@ -30583,8 +30583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689423fc6b7861e478e0b6bb249dbbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _thrustSpeed: 1000
-  _rotationSpeed: 100
+  _thrustSpeed: 1200
+  _rotationSpeed: 200
   _rigidBody: {fileID: 7514662138570732919}
   _thrustAudio: {fileID: 8300000, guid: 21d88f2f256e8b74786cf620d8f512d7, type: 3}
   _crashAudio: {fileID: 8300000, guid: 17de9248e335eb44ebb3f6e0258f51b2, type: 3}

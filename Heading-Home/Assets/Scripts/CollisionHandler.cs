@@ -52,6 +52,16 @@ public class CollisionHandler : MonoBehaviour
 
     #region Methods
 
+    public void OnTriggerEnter(Collider other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case FUEL_TAG:
+                FuelCollision();
+                break;
+        }
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if (_isIdle)
@@ -66,9 +76,6 @@ public class CollisionHandler : MonoBehaviour
                 break;
             case FINISH_TAG:
                 StartFinishSequence();
-                break;
-            case FUEL_TAG:
-                FuelCollision();
                 break;
             default:
                 StartCrashSequence();
