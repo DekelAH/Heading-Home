@@ -31,9 +31,6 @@ public class PlayerSpaceship : MonoBehaviour
 
     [Header("Effects")]
     [SerializeField]
-    private ParticleSystem _successEffect;
-
-    [SerializeField]
     private ParticleSystem _crashEffect;
 
     [SerializeField]
@@ -69,7 +66,7 @@ public class PlayerSpaceship : MonoBehaviour
 
     private void Update()
     {
-        OutOfFuel();
+        CheckOutOfFuel();
     }
 
     private void ProcessRotation(float rotationSpeed)
@@ -79,7 +76,7 @@ public class PlayerSpaceship : MonoBehaviour
         _rigidBody.freezeRotation = false;
     }
 
-    public void OutOfFuel()
+    public void CheckOutOfFuel()
     {
         if (_playerModel.Fuel <= 0)
         {
@@ -180,11 +177,6 @@ public class PlayerSpaceship : MonoBehaviour
         {
             _leftRocketFlame.Play();
         }
-    }
-
-    public void TriggerSuccessEffect()
-    {
-        _successEffect.Play();
     }
 
     public void TriggerCrashEffect()

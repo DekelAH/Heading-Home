@@ -59,6 +59,9 @@ public class CollisionHandler : MonoBehaviour
             case FUEL_TAG:
                 FuelCollision();
                 break;
+            case FINISH_TAG:
+                StartFinishSequence();
+                break;
         }
     }
 
@@ -73,9 +76,6 @@ public class CollisionHandler : MonoBehaviour
         {
             case FRIENDLY_TAG:
                 Debug.Log("Friendly!!!!");
-                break;
-            case FINISH_TAG:
-                StartFinishSequence();
                 break;
             default:
                 StartCrashSequence();
@@ -117,8 +117,6 @@ public class CollisionHandler : MonoBehaviour
         _playerSpaceship.CheckSuccessSoundCondition();
         _playerSpaceship.StopSideFlames();
         _playerSpaceship.StopRocketFlames();
-        _playerSpaceship.TriggerSuccessEffect();
-        DisableBtns();
         StartCoroutine(NextLevelCoroutine());
     }
 

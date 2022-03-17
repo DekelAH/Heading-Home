@@ -30590,7 +30590,6 @@ MonoBehaviour:
   _crashAudio: {fileID: 8300000, guid: 17de9248e335eb44ebb3f6e0258f51b2, type: 3}
   _successAudio: {fileID: 8300000, guid: 136c71141cfab5b4287adab6a17e4fde, type: 3}
   _audioSource: {fileID: 7514662138570732921}
-  _successEffect: {fileID: 0}
   _crashEffect: {fileID: 6625464912324973044}
   _rocketFlame01: {fileID: 220718944}
   _rocketFlame02: {fileID: 1733989836}
@@ -30612,7 +30611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayAfterCrash: 3
-  _delayAfterFinish: 3
+  _delayAfterFinish: 0.2
   _playerSpaceship: {fileID: 7514662138570732920}
   _rotateLeft: {fileID: 0}
   _rotateRight: {fileID: 0}
