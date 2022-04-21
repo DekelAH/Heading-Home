@@ -30361,7 +30361,6 @@ GameObject:
   - component: {fileID: 7514662138570732919}
   - component: {fileID: 7514662138570732921}
   - component: {fileID: 7514662138570732920}
-  - component: {fileID: 7514662138570732922}
   m_Layer: 0
   m_Name: Player Spaceship
   m_TagString: Untagged
@@ -30586,6 +30585,7 @@ MonoBehaviour:
   _thrustSpeed: 1200
   _rotationSpeed: 200
   _rigidBody: {fileID: 7514662138570732919}
+  _movementManager: {fileID: 0}
   _thrustAudio: {fileID: 8300000, guid: 21d88f2f256e8b74786cf620d8f512d7, type: 3}
   _crashAudio: {fileID: 8300000, guid: 17de9248e335eb44ebb3f6e0258f51b2, type: 3}
   _successAudio: {fileID: 8300000, guid: 136c71141cfab5b4287adab6a17e4fde, type: 3}
@@ -30597,27 +30597,6 @@ MonoBehaviour:
   _rocketFlame04: {fileID: 472221448}
   _leftRocketFlame: {fileID: 6286388674310759739}
   _rightRocketFlame: {fileID: 5158372353607063874}
-  _playerModel: {fileID: 11400000, guid: 726bacc5e04d98f4aa9e1ae6a8e6f335, type: 2}
---- !u!114 &7514662138570732922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8695637566910569384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae55862e777ca6a4eb5ec754fd029259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _delayAfterCrash: 3
-  _delayAfterFinish: 0.2
-  _playerSpaceship: {fileID: 7514662138570732920}
-  _rotateLeft: {fileID: 0}
-  _rotateRight: {fileID: 0}
-  _thrust: {fileID: 0}
-  _playerModel: {fileID: 11400000, guid: 726bacc5e04d98f4aa9e1ae6a8e6f335, type: 2}
-  _fuel: {fileID: 0}
 --- !u!1 &9076663853176495768
 GameObject:
   m_ObjectHideFlags: 0

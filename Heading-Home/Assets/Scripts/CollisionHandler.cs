@@ -1,6 +1,7 @@
 using Assets.Scripts;
+using Assets.Scripts.Infastructure;
+using Assets.Scripts.Items;
 using Assets.Scripts.Model;
-using Assets.Scripts.View.Items;
 using Assets.Scripts.View.Movement_Btns;
 using System.Collections;
 using UnityEngine;
@@ -19,19 +20,13 @@ public class CollisionHandler : MonoBehaviour
     private PlayerSpaceship _playerSpaceship;
 
     [SerializeField]
-    private RotateLeft _rotateLeft;
+    private MovementManager _movementManager;
 
     [SerializeField]
-    private RotateRight _rotateRight;
+    private ItemModel _fuelModel;
 
     [SerializeField]
-    private Thrust _thrust;
-
-    [SerializeField]
-    private PlayerModel _playerModel;
-
-    [SerializeField]
-    private Item _fuel;
+    private ItemView _fuel;
 
     #endregion
 
@@ -39,13 +34,11 @@ public class CollisionHandler : MonoBehaviour
 
     private const string FRIENDLY_TAG = "Friendly";
     private const string FINISH_TAG = "Finish";
-    private const string FUEL_TAG = "Fuel";
 
     #endregion
 
     #region Fields
 
-    private readonly SceneHandler _sceneHandler = new SceneHandler();
     private bool _isIdle = false;
 
     #endregion
@@ -56,9 +49,6 @@ public class CollisionHandler : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case FUEL_TAG:
-                FuelCollision();
-                break;
             case FINISH_TAG:
                 StartFinishSequence();
                 break;
@@ -83,12 +73,6 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    private void FuelCollision()
-    {
-        _playerModel.AddFuel(_fuel.Parameter);
-        _fuel.DestroyItem();
-    }
-
     private void StartCrashSequence()
     {
         _isIdle = true;
@@ -98,16 +82,19 @@ public class CollisionHandler : MonoBehaviour
         _playerSpaceship.StopSideFlames();
         _playerSpaceship.StopRocketFlames();
         _playerSpaceship.TriggerCrashEffect();
-        DisableBtns();
-        StartCoroutine(ReloadLevelCoroutine());
+        _movementManager.DisableBtns();
+        StartCoroutine(ReloadLevel(_delayAfterCrash));
     }
 
-    private IEnumerator ReloadLevelCoroutine()
+    private IEnumerator ReloadLevel(float delay)
     {
 
-        yield return new WaitForSeconds(_delayAfterCrash);
+        yield return new WaitForSeconds(delay);
 
-        _sceneHandler.ReloadLevel();
+        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+        playerModel.ResetFuel();
+        var sceneHandler = new SceneHandler();
+        sceneHandler.ReloadLevel();
     }
 
     private void StartFinishSequence()
@@ -117,21 +104,17 @@ public class CollisionHandler : MonoBehaviour
         _playerSpaceship.CheckSuccessSoundCondition();
         _playerSpaceship.StopSideFlames();
         _playerSpaceship.StopRocketFlames();
-        StartCoroutine(NextLevelCoroutine());
+        StartCoroutine(NextLevel(_delayAfterFinish));
     }
 
-    private IEnumerator NextLevelCoroutine()
+    private IEnumerator NextLevel(float delay)
     {
-        yield return new WaitForSeconds(_delayAfterFinish);
+        yield return new WaitForSeconds(delay);
 
-        _sceneHandler.NextLevel();
-    }
-
-    public void DisableBtns()
-    {
-        _thrust.enabled = false;
-        _rotateLeft.enabled = false;
-        _rotateRight.enabled = false;
+        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+        playerModel.ResetFuel();
+        var sceneHandler = new SceneHandler();
+        sceneHandler.NextLevel();
     }
 
     #endregion

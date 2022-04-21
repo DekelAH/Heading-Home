@@ -8,31 +8,36 @@ namespace Assets.Scripts.Model
     {
         #region Events
 
-        public event Action<int> FuelChange;
+        public event Action<int> FuelAmountChange;
 
         #endregion
 
         #region Editor
 
         [SerializeField]
-        private int _fuel;
+        private int _fuelAmount;
 
         #endregion
 
         #region Methods
 
+        public void ResetFuel()
+        {
+            _fuelAmount = 100;
+        }
+
         public void AddFuel(int fuelToAdd)
         {
-            _fuel += fuelToAdd;
-            FuelChange?.Invoke(_fuel);
+            _fuelAmount += fuelToAdd;
+            FuelAmountChange?.Invoke(_fuelAmount);
         }
 
         public void WithdrawFuel(int fuelToWithdraw)
         {
-            if (fuelToWithdraw <= _fuel)
+            if (fuelToWithdraw <= _fuelAmount)
             {
-                _fuel = Mathf.Max(0, _fuel - fuelToWithdraw);
-                FuelChange?.Invoke(_fuel);
+                _fuelAmount = Mathf.Max(0, _fuelAmount - fuelToWithdraw);
+                FuelAmountChange?.Invoke(_fuelAmount);
             }
         }
 
@@ -40,7 +45,7 @@ namespace Assets.Scripts.Model
 
         #region Properties
 
-        public int Fuel => _fuel;
+        public int Fuel => _fuelAmount;
 
         #endregion
     }

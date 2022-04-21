@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6956174235652383891}
   - component: {fileID: 6956174235652383884}
   - component: {fileID: 6956174235652383889}
-  - component: {fileID: 4737212213102487100}
+  - component: {fileID: -2222527651426595775}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Fuel
@@ -4821,7 +4821,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4737212213102487100
+--- !u!114 &-2222527651426595775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4830,10 +4830,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6956174235652383885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f420f4337a9b74e921dda91ba14074, type: 3}
+  m_Script: {fileID: 11500000, guid: 762800cb2ad02dd4b805e3f66fca430c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parameter: 10
+  _itemModel: {fileID: 11400000, guid: 9e4c5969312c78d43a4dc02a5fe88ea3, type: 2}
 --- !u!1 &6956174235971920372
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,7 +4922,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 2.2e-44, y: -2.4405384e-30, z: 9.188e-41, w: 2.75506e-40}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

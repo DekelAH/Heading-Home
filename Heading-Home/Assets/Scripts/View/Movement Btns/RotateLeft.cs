@@ -19,6 +19,7 @@ namespace Assets.Scripts.View.Movement_Btns
         #endregion
 
         #region Methods
+
         private void Update()
         {
             CheckLeftBtnPressed();

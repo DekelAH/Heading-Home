@@ -1,4 +1,5 @@
-using Assets.Scripts.Model;
+using Assets.Scripts.Infastructure;
+using Assets.Scripts.View.Movement_Btns;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class PlayerSpaceship : MonoBehaviour
 
     [SerializeField]
     private Rigidbody _rigidBody;
+
+    [SerializeField]
+    private MovementManager _movementManager;
 
     [Header("Audio")]
     [SerializeField]
@@ -51,9 +55,6 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private ParticleSystem _rightRocketFlame;
 
-    [SerializeField]
-    private PlayerModel _playerModel;
-
     #endregion
 
     #region Fields
@@ -78,10 +79,11 @@ public class PlayerSpaceship : MonoBehaviour
 
     public void CheckOutOfFuel()
     {
-        if (_playerModel.Fuel <= 0)
+        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+
+        if (playerModel.Fuel <= 0)
         {
-            var collisionHandler = GetComponent<CollisionHandler>();
-            collisionHandler.DisableBtns();
+            _movementManager.DisableBtns();
             StopSideFlames();
             StopRocketFlames();
             _audioSource.Stop();

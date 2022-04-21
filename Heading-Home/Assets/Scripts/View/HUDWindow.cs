@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Model;
+﻿using Assets.Scripts.Infastructure;
+using Assets.Scripts.Model;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,6 @@ namespace Assets.Scripts
         [SerializeField]
         private Slider _fuelBar;
 
-        [SerializeField]
-        private PlayerModel _playerModel;
-
         #endregion
 
         #region Methods
@@ -25,27 +23,36 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            UpdateView();
+            SubscribeToEvents();
         }
 
         private void SetUpParams()
         {
-            _fuelBar.value = _playerModel.Fuel;
+            var playerModel = SetPlayerModel();
+            _fuelBar.value = playerModel.Fuel;
         }
 
         private void OnDestroy()
         {
-            _playerModel.FuelChange -= OnUpdateFuelBar;
+            var playerModel = SetPlayerModel();
+            playerModel.FuelAmountChange -= OnFuelChange;
         }
 
-        private void UpdateView()
+        private void SubscribeToEvents()
         {
-            _playerModel.FuelChange += OnUpdateFuelBar;
+            var playerModel = SetPlayerModel();
+            playerModel.FuelAmountChange += OnFuelChange;
         }
 
-        private void OnUpdateFuelBar(int fuel)
+        private void OnFuelChange(int fuel)
         {
             _fuelBar.value = fuel;
+        }
+
+        private PlayerModel SetPlayerModel()
+        {
+            var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+            return playerModel;
         }
 
         #endregion

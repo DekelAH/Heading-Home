@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Model;
+﻿using Assets.Scripts.Infastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,9 +10,6 @@ namespace Assets.Scripts.View.Movement_Btns
 
         [SerializeField]
         private PlayerSpaceship _playerSpaceship;
-
-        [SerializeField]
-        private PlayerModel _playerModel;
 
         [SerializeField]
         private int _fuelToWithdraw;
@@ -30,6 +27,7 @@ namespace Assets.Scripts.View.Movement_Btns
         private void Update()
         {
             CheckThrustBtnPressed();
+
         }
 
         private void CheckThrustBtnPressed()
@@ -39,7 +37,6 @@ namespace Assets.Scripts.View.Movement_Btns
                 _playerSpaceship.ProcessThrust();
                 _playerSpaceship.CheckThrustSoundCondition();
                 _playerSpaceship.TriggerRocketFlames();
-                
             }
             else
             {
@@ -51,7 +48,9 @@ namespace Assets.Scripts.View.Movement_Btns
         public void OnPointerDown(PointerEventData eventData)
         {
             _isPressed = true;
-            _playerModel.WithdrawFuel(_fuelToWithdraw);
+
+            var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+            playerModel.WithdrawFuel(_fuelToWithdraw);
         }
 
         public void OnPointerUp(PointerEventData eventData)
