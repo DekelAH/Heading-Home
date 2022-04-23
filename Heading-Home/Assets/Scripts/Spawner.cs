@@ -8,10 +8,16 @@ namespace Assets.Scripts
         #region Editor
 
         [SerializeField]
-        private Transform[] _spawnSpots;
+        private Transform[] _fuelSpawnSpots;
+
+        [SerializeField]
+        private Transform[] _obstacleFallerSpots;
 
         [SerializeField]
         private FuelFactory _fuelFactory;
+
+        [SerializeField]
+        private ObstacleFallerFactory _obstacleFallerFactory;
 
         #endregion
 
@@ -19,14 +25,30 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            SpawnItem(_spawnSpots);
+            SpawnFuel(_fuelSpawnSpots);
+            SpawnObstacleFaller(_obstacleFallerSpots);
         }
 
-        private void SpawnItem(Transform[] spawnSpots)
+        private void SpawnFuel(Transform[] fuelSpawnSpots)
         {
-            for (int i = 0; i < spawnSpots.Length; i++)
+            for (int i = 0; i < fuelSpawnSpots.Length; i++)
             {
-                _fuelFactory.CreateItem(spawnSpots[i].transform.position);
+                _fuelFactory.CreateItem(fuelSpawnSpots[i].transform.position);
+            }
+        }
+
+        private void SpawnObstacleFaller(Transform[] obstacleFallerSpots)
+        {
+            if (_obstacleFallerFactory != null)
+            {
+                for (int i = 0; i < obstacleFallerSpots.Length; i++)
+                {
+                    _obstacleFallerFactory.CreateObstacle(obstacleFallerSpots[i].transform.position);
+                }
+            }
+            else
+            {
+                return;
             }
         }
 

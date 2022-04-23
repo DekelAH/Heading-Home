@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Items;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Factories
 {
@@ -16,8 +15,8 @@ namespace Assets.Scripts.Factories
 
         public virtual GameObject CreateItem(Vector3 spawnSpot)
         {
-            var instance = Instantiate(_itemPrefabRef, spawnSpot, Quaternion.identity) as GameObject;
-            return instance;
+            var itemInstance = Instantiate(_itemPrefabRef, spawnSpot, Quaternion.identity) as GameObject;
+            return itemInstance;
         }
 
         #endregion

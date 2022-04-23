@@ -1,8 +1,5 @@
 using Assets.Scripts;
 using Assets.Scripts.Infastructure;
-using Assets.Scripts.Items;
-using Assets.Scripts.Model;
-using Assets.Scripts.View.Movement_Btns;
 using System.Collections;
 using UnityEngine;
 
@@ -18,15 +15,6 @@ public class CollisionHandler : MonoBehaviour
 
     [SerializeField]
     private PlayerSpaceship _playerSpaceship;
-
-    [SerializeField]
-    private MovementManager _movementManager;
-
-    [SerializeField]
-    private ItemModel _fuelModel;
-
-    [SerializeField]
-    private ItemView _fuel;
 
     #endregion
 
@@ -76,19 +64,12 @@ public class CollisionHandler : MonoBehaviour
     private void StartCrashSequence()
     {
         _isIdle = true;
-        _playerSpaceship.AudioSource.Stop();
-        _playerSpaceship.PlayerExplosion();
-        _playerSpaceship.CheckCrashSoundCondition();
-        _playerSpaceship.StopSideFlames();
-        _playerSpaceship.StopRocketFlames();
-        _playerSpaceship.TriggerCrashEffect();
-        _movementManager.DisableBtns();
-        StartCoroutine(ReloadLevel(_delayAfterCrash));
+        _playerSpaceship.CrashSequence();
+        StartCoroutine(OnReloadLevel(_delayAfterCrash));
     }
 
-    private IEnumerator ReloadLevel(float delay)
+    private IEnumerator OnReloadLevel(float delay)
     {
-
         yield return new WaitForSeconds(delay);
 
         var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
@@ -100,14 +81,11 @@ public class CollisionHandler : MonoBehaviour
     private void StartFinishSequence()
     {
         _isIdle = true;
-        _playerSpaceship.AudioSource.Stop();
-        _playerSpaceship.CheckSuccessSoundCondition();
-        _playerSpaceship.StopSideFlames();
-        _playerSpaceship.StopRocketFlames();
-        StartCoroutine(NextLevel(_delayAfterFinish));
+        _playerSpaceship.FinishSequence();
+        StartCoroutine(OnNextLevel(_delayAfterFinish));
     }
 
-    private IEnumerator NextLevel(float delay)
+    private IEnumerator OnNextLevel(float delay)
     {
         yield return new WaitForSeconds(delay);
 

@@ -70,38 +70,24 @@ public class PlayerSpaceship : MonoBehaviour
         CheckOutOfFuel();
     }
 
-    private void ProcessRotation(float rotationSpeed)
+    public void CrashSequence()
     {
-        _rigidBody.freezeRotation = true;
-        transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.forward);
-        _rigidBody.freezeRotation = false;
+        AudioSource.Stop();
+        PlayerExplosion();
+        CheckCrashSoundCondition();
+        StopSideFlames();
+        StopRocketFlames();
+        TriggerCrashEffect();
+        _movementManager.DisableBtns();
     }
 
-    public void CheckOutOfFuel()
+    public void FinishSequence()
     {
-        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
-
-        if (playerModel.Fuel <= 0)
-        {
-            _movementManager.DisableBtns();
-            StopSideFlames();
-            StopRocketFlames();
-            _audioSource.Stop();
-        }
-    }
-
-    public void PlayerExplosion()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            _childrenTransform.Add(transform.GetChild(i));
-        }
-
-        foreach (var child in _childrenTransform)
-        {
-            child.gameObject.AddComponent<Rigidbody>();
-            child.gameObject.AddComponent<MeshCollider>().convex = true;
-        }
+        AudioSource.Stop();
+        CheckSuccessSoundCondition();
+        StopSideFlames();
+        StopRocketFlames();
+        _movementManager.DisableBtns();
     }
 
     public void ProcessThrust()
@@ -127,19 +113,11 @@ public class PlayerSpaceship : MonoBehaviour
         }
     }
 
-    public void CheckCrashSoundCondition()
+    public void TriggerLeftFlame()
     {
-        if (!_audioSource.isPlaying)
+        if (!_leftRocketFlame.isPlaying)
         {
-            _audioSource.PlayOneShot(_crashAudio);
-        }
-    }
-
-    public void CheckSuccessSoundCondition()
-    {
-        if (!_audioSource.isPlaying)
-        {
-            _audioSource.PlayOneShot(_successAudio);
+            _leftRocketFlame.Play();
         }
     }
 
@@ -150,6 +128,13 @@ public class PlayerSpaceship : MonoBehaviour
         _rocketFlame03.Play();
         _rocketFlame04.Play();
     }
+    public void TriggerRightFlame()
+    {
+        if (!_rightRocketFlame.isPlaying)
+        {
+            _rightRocketFlame.Play();
+        }
+    }
 
     public void StopRocketFlames()
     {
@@ -159,29 +144,63 @@ public class PlayerSpaceship : MonoBehaviour
         _rocketFlame04.Stop();
     }
 
-    public void TriggerRightFlame()
-    {
-        if (!_rightRocketFlame.isPlaying)
-        {
-            _rightRocketFlame.Play();
-        }
-    }
-
     public void StopSideFlames()
     {
         _rightRocketFlame.Stop();
         _leftRocketFlame.Stop();
     }
 
-    public void TriggerLeftFlame()
+    private void CheckOutOfFuel()
     {
-        if (!_leftRocketFlame.isPlaying)
+        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+
+        if (playerModel.Fuel <= 0)
         {
-            _leftRocketFlame.Play();
+            _movementManager.DisableBtns();
+            StopSideFlames();
+            StopRocketFlames();
+            _audioSource.Stop();
         }
     }
 
-    public void TriggerCrashEffect()
+    private void ProcessRotation(float rotationSpeed)
+    {
+        _rigidBody.freezeRotation = true;
+        transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.forward);
+        _rigidBody.freezeRotation = false;
+    }
+
+    private void PlayerExplosion()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            _childrenTransform.Add(transform.GetChild(i));
+        }
+
+        foreach (var child in _childrenTransform)
+        {
+            child.gameObject.AddComponent<Rigidbody>();
+            child.gameObject.AddComponent<MeshCollider>().convex = true;
+        }
+    }
+
+    private void CheckCrashSoundCondition()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(_crashAudio);
+        }
+    }
+
+    private void CheckSuccessSoundCondition()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(_successAudio);
+        }
+    }
+
+    private void TriggerCrashEffect()
     {
         _crashEffect.Play();
     }
