@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Factories;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -25,15 +26,22 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            SpawnFuel(_fuelSpawnSpots);
             SpawnObstacleFaller(_obstacleFallerSpots);
+            SpawnFuel(_fuelSpawnSpots);
         }
 
         private void SpawnFuel(Transform[] fuelSpawnSpots)
         {
-            for (int i = 0; i < fuelSpawnSpots.Length; i++)
+            if (_fuelFactory != null)
             {
-                _fuelFactory.CreateItem(fuelSpawnSpots[i].transform.position);
+                for (int i = 0; i < fuelSpawnSpots.Length; i++)
+                {
+                    _fuelFactory.CreateItem(fuelSpawnSpots[i].transform.position);
+                }
+            }
+            else
+            {
+                return;
             }
         }
 

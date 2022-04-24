@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Obstacles
+namespace Assets.Scripts.Faller.Obstacles
 {
     public class ObstacleFaller : MonoBehaviour
     {

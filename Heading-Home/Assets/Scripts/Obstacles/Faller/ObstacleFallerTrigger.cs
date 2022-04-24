@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Factories;
-using System;
+using Assets.Scripts.Faller.Obstacles;
 using UnityEngine;
 
 namespace Assets.Scripts.Obstacles.Faller
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Obstacles.Faller
 
         #region Methods
 
-        private void Start()
+        private void Awake()
         {
             _obstacleFallerFactory.ObstacleFallerCreated += OnObstacleFallerCreated;
         }

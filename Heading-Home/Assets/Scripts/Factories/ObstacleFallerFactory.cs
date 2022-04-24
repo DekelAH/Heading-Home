@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Obstacles;
+﻿using Assets.Scripts.Faller.Obstacles;
 using System;
 using UnityEngine;
 
@@ -19,6 +19,7 @@ namespace Assets.Scripts.Factories
             var obstacleFallerInstance = Instantiate(_obstaclePrefabRef, spawnSpot, Quaternion.identity) as GameObject;
             obstacleFallerInstance.AddComponent<ObstacleFaller>();
             ObstacleFallerCreated?.Invoke(obstacleFallerInstance);
+
             return obstacleFallerInstance;
         }
 
