@@ -32,5 +32,11 @@ namespace Assets.Scripts
         }
 
         #endregion
+
+        #region Properties
+
+        public int GetActiveScene => GetActiveSceneIndex();
+
+        #endregion
     }
 }

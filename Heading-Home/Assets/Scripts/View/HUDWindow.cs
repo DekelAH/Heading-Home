@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Infastructure;
 using Assets.Scripts.Model;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,9 @@ namespace Assets.Scripts
         [SerializeField]
         private Slider _fuelBar;
 
+        [SerializeField]
+        private TextMeshProUGUI _currentLevel;
+
         #endregion
 
         #region Methods
@@ -19,11 +23,18 @@ namespace Assets.Scripts
         private void Start()
         {
             SetUpParams();
+            SetCurrentLevel();
         }
 
         private void Update()
         {
             SubscribeToEvents();
+        }
+
+        private void SetCurrentLevel()
+        {
+            var sceneHandler = new SceneHandler();
+            _currentLevel.text = (sceneHandler.GetActiveScene + 1).ToString();
         }
 
         private void SetUpParams()

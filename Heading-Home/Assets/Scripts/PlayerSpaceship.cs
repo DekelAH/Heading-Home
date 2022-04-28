@@ -156,10 +156,10 @@ public class PlayerSpaceship : MonoBehaviour
 
         if (playerModel.Fuel <= 0)
         {
+            _audioSource.Stop();
             _movementManager.DisableBtns();
             StopSideFlames();
             StopRocketFlames();
-            _audioSource.Stop();
         }
     }
 
