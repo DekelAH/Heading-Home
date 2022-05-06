@@ -21,9 +21,17 @@ namespace Assets.Scripts.View.Movement_Btns
 
         public void DisableBtns()
         {
-            _thrust.enabled = false;
-            _rotateLeft.enabled = false;
-            _rotateRight.enabled = false;
+            if (_thrust != null && _rotateLeft != null && _rotateRight != null)
+            {
+                _thrust.enabled = false;
+                _rotateLeft.enabled = false;
+                _rotateRight.enabled = false;
+            }
+            else
+            {
+                return;
+            }
+
         }
 
         #endregion

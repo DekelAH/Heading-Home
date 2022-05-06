@@ -30359,9 +30359,7 @@ GameObject:
   - component: {fileID: 6927197201820544208}
   - component: {fileID: 6093849568248058292}
   - component: {fileID: 7514662138570732919}
-  - component: {fileID: 7514662138570732921}
   - component: {fileID: 7514662138570732920}
-  - component: {fileID: 1765216936}
   - component: {fileID: 2252937745414373645}
   m_Layer: 0
   m_Name: Player Spaceship
@@ -30476,102 +30474,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!82 &7514662138570732921
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8695637566910569384}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &7514662138570732920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30588,10 +30490,6 @@ MonoBehaviour:
   _rotationSpeed: 200
   _rigidBody: {fileID: 7514662138570732919}
   _movementManager: {fileID: 0}
-  _thrustAudio: {fileID: 8300000, guid: 21d88f2f256e8b74786cf620d8f512d7, type: 3}
-  _crashAudio: {fileID: 8300000, guid: 17de9248e335eb44ebb3f6e0258f51b2, type: 3}
-  _successAudio: {fileID: 8300000, guid: 136c71141cfab5b4287adab6a17e4fde, type: 3}
-  _audioSource: {fileID: 7514662138570732921}
   _crashEffect: {fileID: 6625464912324973044}
   _rocketFlame01: {fileID: 220718944}
   _rocketFlame02: {fileID: 1733989836}
@@ -30599,21 +30497,6 @@ MonoBehaviour:
   _rocketFlame04: {fileID: 472221448}
   _leftRocketFlame: {fileID: 6286388674310759739}
   _rightRocketFlame: {fileID: 5158372353607063874}
---- !u!114 &1765216936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8695637566910569384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae55862e777ca6a4eb5ec754fd029259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _delayAfterCrash: 3
-  _delayAfterFinish: 0.2
-  _playerSpaceship: {fileID: 7514662138570732920}
 --- !u!114 &2252937745414373645
 MonoBehaviour:
   m_ObjectHideFlags: 0

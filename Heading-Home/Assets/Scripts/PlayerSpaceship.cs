@@ -20,19 +20,6 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private MovementManager _movementManager;
 
-    [Header("Audio")]
-    [SerializeField]
-    private AudioClip _thrustAudio;
-
-    [SerializeField]
-    private AudioClip _crashAudio;
-
-    [SerializeField]
-    private AudioClip _successAudio;
-
-    [SerializeField]
-    private AudioSource _audioSource;
-
     [Header("Effects")]
     [SerializeField]
     private ParticleSystem _crashEffect;
@@ -57,34 +44,55 @@ public class PlayerSpaceship : MonoBehaviour
 
     #endregion
 
+    #region Consts
+
+    private const string CRASH_CLIP_NAME = "CrashAudio";
+    private const string FINISH_CLIP_NAME = "FinishAudio";
+    private const string THRUST_CLIP_NAME = "ThrustAudio";
+    private const string OUT_OF_FUEL_CLIP_NAME = "OutOfFuelAudio";
+
+    #endregion
+
     #region Fields
 
     private readonly List<Transform> _childrenTransform = new List<Transform>();
+    private AudioManager _audioManager;
 
     #endregion
 
     #region Methods
 
-    private void Update()
+    private void Awake()
     {
-        CheckOutOfFuel();
+        SetUpAudioManager();
+    }
+
+    private void Start()
+    {
+        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+        playerModel.OutOfFuel += OnOutOfFuel;
+    }
+
+    private void SetUpAudioManager()
+    {
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void CrashSequence()
     {
-        AudioSource.Stop();
+        StopOutOfFuelSound();
+        StopThrustSound();
+        _audioManager.PlaySound(CRASH_CLIP_NAME);
         PlayerExplosion();
-        CheckCrashSoundCondition();
+        _movementManager.DisableBtns();
         StopSideFlames();
         StopRocketFlames();
         TriggerCrashEffect();
-        _movementManager.DisableBtns();
     }
 
     public void FinishSequence()
     {
-        AudioSource.Stop();
-        CheckSuccessSoundCondition();
+        _audioManager.PlaySound(FINISH_CLIP_NAME);
         StopSideFlames();
         StopRocketFlames();
         _movementManager.DisableBtns();
@@ -103,14 +111,6 @@ public class PlayerSpaceship : MonoBehaviour
     public void RightRotation()
     {
         ProcessRotation(-_rotationSpeed);
-    }
-
-    public void CheckThrustSoundCondition()
-    {
-        if (!_audioSource.isPlaying)
-        {
-            _audioSource.PlayOneShot(_thrustAudio);
-        }
     }
 
     public void TriggerLeftFlame()
@@ -150,16 +150,48 @@ public class PlayerSpaceship : MonoBehaviour
         _leftRocketFlame.Stop();
     }
 
-    private void CheckOutOfFuel()
+    private void OnOutOfFuel(bool fuelStatus)
     {
-        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
-
-        if (playerModel.Fuel <= 0)
+        if (fuelStatus)
         {
-            _audioSource.Stop();
-            _movementManager.DisableBtns();
-            StopSideFlames();
-            StopRocketFlames();
+            return;
+        }
+        else
+        {
+            StopThrustSound();
+            StartOutOfFuelSequence();
+        }
+    }
+
+    private void StartOutOfFuelSequence()
+    {
+        _movementManager.DisableBtns();
+        CheckOutOfFuelSoundCondition();
+    }
+
+    public void CheckThrustSoundCondition()
+    {
+        if (!_audioManager.GetAudioSource(THRUST_CLIP_NAME).isPlaying)
+        {
+            _audioManager.PlaySoundOneShot(THRUST_CLIP_NAME);
+        }
+    }
+
+    public void StopThrustSound()
+    {
+        _audioManager.StopSound(THRUST_CLIP_NAME);
+    }
+
+    private void StopOutOfFuelSound()
+    {
+        _audioManager.StopSound(OUT_OF_FUEL_CLIP_NAME);
+    }
+
+    private void CheckOutOfFuelSoundCondition()
+    {
+        if (!_audioManager.GetAudioSource(OUT_OF_FUEL_CLIP_NAME).isPlaying)
+        {
+            _audioManager.PlaySoundOneShot(OUT_OF_FUEL_CLIP_NAME);
         }
     }
 
@@ -184,22 +216,6 @@ public class PlayerSpaceship : MonoBehaviour
         }
     }
 
-    private void CheckCrashSoundCondition()
-    {
-        if (!_audioSource.isPlaying)
-        {
-            _audioSource.PlayOneShot(_crashAudio);
-        }
-    }
-
-    private void CheckSuccessSoundCondition()
-    {
-        if (!_audioSource.isPlaying)
-        {
-            _audioSource.PlayOneShot(_successAudio);
-        }
-    }
-
     private void TriggerCrashEffect()
     {
         _crashEffect.Play();
@@ -211,7 +227,6 @@ public class PlayerSpaceship : MonoBehaviour
 
     public float ThrustSpeed => _thrustSpeed;
     public float RotationSpeed => _rotationSpeed;
-    public AudioSource AudioSource => _audioSource;
 
     #endregion
 }

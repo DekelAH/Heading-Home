@@ -2283,26 +2283,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83fb1375fb32e4c49a36399ca5a66aac, type: 3}
---- !u!1 &1765216935 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8695637566910569384, guid: 76e52231725a9a34585e11ecfb38d082, type: 3}
-  m_PrefabInstance: {fileID: 7514662138570732916}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1765216936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765216935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae55862e777ca6a4eb5ec754fd029259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _delayAfterCrash: 3
-  _delayAfterFinish: 0.2
-  _playerSpaceship: {fileID: 7514662138570732920}
 --- !u!1 &1773264186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3703,10 +3683,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Spaceship
       objectReference: {fileID: 0}
-    - target: {fileID: 8695637566910569384, guid: 76e52231725a9a34585e11ecfb38d082, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e52231725a9a34585e11ecfb38d082, type: 3}
 --- !u!4 &7514662138570732917 stripped
@@ -3719,7 +3695,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7514662138570732920, guid: 76e52231725a9a34585e11ecfb38d082, type: 3}
   m_PrefabInstance: {fileID: 7514662138570732916}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765216935}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 689423fc6b7861e478e0b6bb249dbbb7, type: 3}

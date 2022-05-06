@@ -9,6 +9,7 @@ namespace Assets.Scripts.Model
         #region Events
 
         public event Action<int> FuelAmountChange;
+        public event Action<bool> OutOfFuel;
 
         #endregion
 
@@ -34,10 +35,20 @@ namespace Assets.Scripts.Model
 
         public void WithdrawFuel(int fuelToWithdraw)
         {
-            if (fuelToWithdraw <= _fuelAmount)
+            _fuelAmount = Mathf.Max(0, _fuelAmount - fuelToWithdraw);
+            FuelAmountChange?.Invoke(_fuelAmount);
+            CheckFuelStatus();
+        }
+
+        private void CheckFuelStatus()
+        {
+            if (_fuelAmount <= 0)
             {
-                _fuelAmount = Mathf.Max(0, _fuelAmount - fuelToWithdraw);
-                FuelAmountChange?.Invoke(_fuelAmount);
+                OutOfFuel?.Invoke(false);
+            }
+            else
+            {
+                return;
             }
         }
 

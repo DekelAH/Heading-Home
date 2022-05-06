@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b85192f1facc942907a59abc9da1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fuelSpawnSpots: []
+  _fuelSpawnSpots:
+  - {fileID: 0}
   _obstacleFallerSpots:
   - {fileID: 0}
   _fuelFactory: {fileID: 0}

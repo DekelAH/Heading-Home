@@ -27,7 +27,6 @@ namespace Assets.Scripts.View.Movement_Btns
         private void Update()
         {
             CheckThrustBtnPressed();
-
         }
 
         private void CheckThrustBtnPressed()
@@ -40,7 +39,7 @@ namespace Assets.Scripts.View.Movement_Btns
             }
             else
             {
-                _playerSpaceship.AudioSource.Stop();
+                _playerSpaceship.StopThrustSound();
                 _playerSpaceship.StopRocketFlames();
             }
         }

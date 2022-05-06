@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpaceship: {fileID: 0}
+  _fuelToWithdraw: 10
