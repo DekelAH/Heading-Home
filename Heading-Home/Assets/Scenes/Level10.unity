@@ -2981,6 +2981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fuelBar: {fileID: 1786308026}
+  _fuelBarSpeed: 5
   _currentLevel: {fileID: 2000904578}
 --- !u!1001 &1599508975
 PrefabInstance:

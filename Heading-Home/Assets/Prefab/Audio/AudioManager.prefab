@@ -48,7 +48,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 17de9248e335eb44ebb3f6e0258f51b2, type: 3}
     Loop: 0
     Volume: 1
-    Pitch: 1
+    Pitch: 0.75
     AudioSource: {fileID: 0}
   - Name: GameAudio
     Clip: {fileID: 8300000, guid: c71de7f3c7bf1d34da0d1eb5d7e4bba6, type: 3}
@@ -59,14 +59,14 @@ MonoBehaviour:
   - Name: FinishAudio
     Clip: {fileID: 8300000, guid: 136c71141cfab5b4287adab6a17e4fde, type: 3}
     Loop: 0
-    Volume: 1
-    Pitch: 1
+    Volume: 0.6
+    Pitch: 0.9
     AudioSource: {fileID: 0}
   - Name: ThrustAudio
     Clip: {fileID: 8300000, guid: 21d88f2f256e8b74786cf620d8f512d7, type: 3}
     Loop: 0
-    Volume: 0.61
-    Pitch: 0.9
+    Volume: 0.6
+    Pitch: 0.8
     AudioSource: {fileID: 0}
   - Name: OutOfFuelAudio
     Clip: {fileID: 8300000, guid: 5691c37c3e8494d48a411feba75bf86c, type: 3}

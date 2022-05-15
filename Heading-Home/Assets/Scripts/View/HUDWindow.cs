@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Infastructure;
 using Assets.Scripts.Model;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +15,21 @@ namespace Assets.Scripts
         private Slider _fuelBar;
 
         [SerializeField]
+        private float _fuelBarSpeed;
+
+        [SerializeField]
         private TextMeshProUGUI _currentLevel;
 
         #endregion
+
+        #region Fields
+
+        private float _timeScale;
+        private float _targetFuel;
+        private bool _isLerpingFuel = false;
+
+        #endregion
+
 
         #region Methods
 
@@ -24,11 +37,13 @@ namespace Assets.Scripts
         {
             SetUpParams();
             SetCurrentLevel();
+            SubscribeToEvents();
         }
 
-        private void Update()
+        private void OnDestroy()
         {
-            SubscribeToEvents();
+            var playerModel = SetPlayerModel();
+            playerModel.FuelAmountChange -= OnFuelChange;
         }
 
         private void SetCurrentLevel()
@@ -43,21 +58,39 @@ namespace Assets.Scripts
             _fuelBar.value = playerModel.Fuel;
         }
 
-        private void OnDestroy()
-        {
-            var playerModel = SetPlayerModel();
-            playerModel.FuelAmountChange -= OnFuelChange;
-        }
-
         private void SubscribeToEvents()
         {
             var playerModel = SetPlayerModel();
             playerModel.FuelAmountChange += OnFuelChange;
         }
 
-        private void OnFuelChange(int fuel)
+        private void OnFuelChange(float fuel)
         {
-            _fuelBar.value = fuel;
+            _targetFuel = fuel;
+            
+            _timeScale = 0f;
+
+            if (!_isLerpingFuel)
+            {
+               StartCoroutine(LerpFuel());
+            }
+        }
+
+        private IEnumerator LerpFuel()
+        {
+            var startFuel = _fuelBar.value;
+
+            _isLerpingFuel = true;
+
+            while (_timeScale < 1)
+            {
+                _timeScale += Time.deltaTime * _fuelBarSpeed;
+                _fuelBar.value = Mathf.Lerp(startFuel, _targetFuel, _timeScale);
+
+                yield return null;
+            }
+
+            _isLerpingFuel = false;
         }
 
         private PlayerModel SetPlayerModel()

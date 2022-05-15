@@ -30509,8 +30509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae55862e777ca6a4eb5ec754fd029259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayAfterCrash: 3
-  _delayAfterFinish: 0.2
+  _delayAfterCrash: 3.5
+  _delayAfterFinish: 3.5
   _playerSpaceship: {fileID: 7514662138570732920}
 --- !u!1 &9076663853176495768
 GameObject:
