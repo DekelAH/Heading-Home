@@ -72,11 +72,11 @@ namespace Assets.Scripts
 
             if (!_isLerpingFuel)
             {
-               StartCoroutine(LerpFuel());
+               StartCoroutine(LerpFuelBar());
             }
         }
 
-        private IEnumerator LerpFuel()
+        private IEnumerator LerpFuelBar()
         {
             var startFuel = _fuelBar.value;
 

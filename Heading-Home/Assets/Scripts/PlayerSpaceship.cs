@@ -150,6 +150,11 @@ public class PlayerSpaceship : MonoBehaviour
         _leftRocketFlame.Stop();
     }
 
+    public void HideSpaceship()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnOutOfFuel(bool fuelStatus)
     {
         if (fuelStatus)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3647853206077715493}
   - component: {fileID: 3647853206077715492}
   - component: {fileID: 3647853206077715498}
+  - component: {fileID: 1115891857}
   m_Layer: 0
   m_Name: Finish_Portal
   m_TagString: Finish
@@ -1244,8 +1245,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.7853981
-      minScalar: -0.7853981
+      scalar: 1.3962634
+      minScalar: -1.3962634
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4816,5 +4817,19 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.7400932
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: -0.74009323}
+--- !u!114 &1115891857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647853206077715494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6693ab182516204d841c1420aeea509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _portalPrefabInstance: {fileID: 3647853206077715494}
+  _portalSizeChangeDuration: 1.5

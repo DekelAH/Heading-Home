@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.Infastructure;
+using Assets.Scripts.View;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class CollisionHandler : MonoBehaviour
 
     [SerializeField]
     private PlayerSpaceship _playerSpaceship;
+
+    [SerializeField]
+    private PortalHandler _portalHandler;
 
     #endregion
 
@@ -82,6 +86,7 @@ public class CollisionHandler : MonoBehaviour
     {
         _isIdle = true;
         _playerSpaceship.FinishSequence();
+        StartCoroutine(_portalHandler.LerpPortalSize());
         StartCoroutine(OnNextLevel(_delayAfterFinish));
     }
 

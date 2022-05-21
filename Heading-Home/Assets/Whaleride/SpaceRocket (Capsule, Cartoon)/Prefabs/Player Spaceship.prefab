@@ -30510,8 +30510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayAfterCrash: 3.5
-  _delayAfterFinish: 3.5
+  _delayAfterFinish: 2.8
   _playerSpaceship: {fileID: 7514662138570732920}
+  _portalHandler: {fileID: 0}
 --- !u!1 &9076663853176495768
 GameObject:
   m_ObjectHideFlags: 0
