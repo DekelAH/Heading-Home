@@ -24,7 +24,7 @@ namespace Assets.Scripts
 
         #region Methods
 
-        private void Start()
+        public void StartSpawn()
         {
             SpawnObstacleFaller(_obstacleFallerSpots);
             SpawnFuel(_fuelSpawnSpots);

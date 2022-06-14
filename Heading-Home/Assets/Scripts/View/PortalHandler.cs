@@ -18,9 +18,9 @@ namespace Assets.Scripts.View
         #region Fields
 
         private GameObject _portal;
+        private Vector3 _targetSize;
 
         private float _timeScale;
-        private Vector3 _targetSize;
 
         #endregion
 
@@ -37,7 +37,7 @@ namespace Assets.Scripts.View
             return portal;
         }
 
-        public IEnumerator LerpPortalSize()
+        public IEnumerator LerpPortalShrinkSize()
         {
             _targetSize = new Vector3(0, 0, 0);
             var startSize = _portal.transform.localScale;

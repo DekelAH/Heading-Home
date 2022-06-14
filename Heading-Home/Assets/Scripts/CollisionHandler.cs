@@ -1,24 +1,23 @@
 using Assets.Scripts;
 using Assets.Scripts.Infastructure;
 using Assets.Scripts.View;
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
+    #region Events
+
+    public event Action<bool> PlayerCrashed;
+    public event Action<bool> PlayerWin;
+
+    #endregion
+
     #region Editor
 
     [SerializeField]
-    private float _delayAfterCrash;
-
-    [SerializeField]
-    private float _delayAfterFinish;
-
-    [SerializeField]
     private PlayerSpaceship _playerSpaceship;
-
-    [SerializeField]
-    private PortalHandler _portalHandler;
 
     #endregion
 
@@ -68,36 +67,16 @@ public class CollisionHandler : MonoBehaviour
     private void StartCrashSequence()
     {
         _isIdle = true;
+        PlayerCrashed.Invoke(true);
         _playerSpaceship.CrashSequence();
-        StartCoroutine(OnReloadLevel(_delayAfterCrash));
-    }
-
-    private IEnumerator OnReloadLevel(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
-        playerModel.ResetFuel();
-        var sceneHandler = new SceneHandler();
-        sceneHandler.ReloadLevel();
     }
 
     private void StartFinishSequence()
     {
         _isIdle = true;
+        PlayerWin?.Invoke(true);
         _playerSpaceship.FinishSequence();
-        StartCoroutine(_portalHandler.LerpPortalSize());
-        StartCoroutine(OnNextLevel(_delayAfterFinish));
-    }
-
-    private IEnumerator OnNextLevel(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
-        playerModel.ResetFuel();
-        var sceneHandler = new SceneHandler();
-        sceneHandler.NextLevel();
+        _playerSpaceship.HideSpaceship();
     }
 
     #endregion

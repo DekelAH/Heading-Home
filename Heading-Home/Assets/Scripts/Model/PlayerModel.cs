@@ -27,6 +27,11 @@ namespace Assets.Scripts.Model
             _fuelAmount = 100;
         }
 
+        public void SetFuel(float fuel)
+        {
+            _fuelAmount = fuel;
+        }
+
         public void AddFuel(float fuelToAdd)
         {
             _fuelAmount += fuelToAdd;
