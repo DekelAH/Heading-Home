@@ -25,6 +25,9 @@ public class PlayerSpaceship : MonoBehaviour
     private ParticleSystem _crashEffect;
 
     [SerializeField]
+    private ParticleSystem _crashShockwaveEffect;
+
+    [SerializeField]
     private ParticleSystem _rocketFlame01;
 
     [SerializeField]
@@ -224,6 +227,7 @@ public class PlayerSpaceship : MonoBehaviour
     private void TriggerCrashEffect()
     {
         _crashEffect.Play();
+        _crashShockwaveEffect.Play();
     }
 
     #endregion

@@ -76,7 +76,6 @@ public class CollisionHandler : MonoBehaviour
         _isIdle = true;
         PlayerWin?.Invoke(true);
         _playerSpaceship.FinishSequence();
-        _playerSpaceship.HideSpaceship();
     }
 
     #endregion

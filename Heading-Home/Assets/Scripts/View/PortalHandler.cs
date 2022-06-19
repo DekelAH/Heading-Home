@@ -13,6 +13,12 @@ namespace Assets.Scripts.View
         [SerializeField]
         private float _portalSizeChangeDuration;
 
+        [SerializeField]
+        private ParticleSystem _finishEffect;
+
+        [SerializeField]
+        private ParticleSystem _finishShockwave;
+
         #endregion
 
         #region Fields
@@ -48,6 +54,12 @@ namespace Assets.Scripts.View
                 _portal.transform.localScale = Vector3.Lerp(startSize, _targetSize, _timeScale);
 
                 yield return null;
+            }
+
+            if (_portal.transform.localScale == _targetSize)
+            {
+                _finishEffect.Play();
+                _finishShockwave.Play();
             }
         }
 
