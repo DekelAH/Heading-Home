@@ -24,15 +24,12 @@ namespace Assets.Scripts.View
         #region Fields
 
         private GameObject _portal;
-        private Vector3 _targetSize;
-
-        private float _timeScale;
 
         #endregion
 
         #region Methods
 
-        private void Start()
+        private void Awake()
         {
             _portal = SetPortalInstance(_portalPrefabInstance);
         }
@@ -45,18 +42,19 @@ namespace Assets.Scripts.View
 
         public IEnumerator LerpPortalShrinkSize()
         {
-            _targetSize = new Vector3(0, 0, 0);
+            var targetSize = Vector3.zero;
             var startSize = _portal.transform.localScale;
+            var timeScale = 0f;
 
-            while (_timeScale < 1)
+            while (timeScale < 1)
             {
-                _timeScale += Time.deltaTime * _portalSizeChangeDuration;
-                _portal.transform.localScale = Vector3.Lerp(startSize, _targetSize, _timeScale);
+                timeScale += Time.deltaTime * _portalSizeChangeDuration;
+                _portal.transform.localScale = Vector3.Lerp(startSize, targetSize, timeScale);
 
                 yield return null;
             }
 
-            if (_portal.transform.localScale == _targetSize)
+            if (_portal.transform.localScale == targetSize)
             {
                 _finishEffect.Play();
                 _finishShockwave.Play();

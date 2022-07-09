@@ -82,7 +82,7 @@ namespace Assets.Scripts
 
             _isLerpingFuel = true;
 
-            while (_timeScale < 1)
+            while (_timeScale < 1f)
             {
                 _timeScale += Time.deltaTime * _fuelBarSpeed;
                 _fuelBar.value = Mathf.Lerp(startFuel, _targetFuel, _timeScale);

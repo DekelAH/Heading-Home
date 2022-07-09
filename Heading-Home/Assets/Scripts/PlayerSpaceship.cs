@@ -45,6 +45,9 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private ParticleSystem _rightRocketFlame;
 
+    [SerializeField]
+    private ParticleSystem _speedEffect;
+
     #endregion
 
     #region Consts
@@ -228,6 +231,16 @@ public class PlayerSpaceship : MonoBehaviour
     {
         _crashEffect.Play();
         _crashShockwaveEffect.Play();
+    }
+
+    public void TriggerSpeedEffect()
+    {
+        _speedEffect.Play();
+    }
+
+    public void StopSpeedEffect()
+    {
+        _speedEffect.Stop();
     }
 
     #endregion

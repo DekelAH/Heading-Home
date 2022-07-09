@@ -68,8 +68,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.2
     - _DistortionEnabled: 1
-    - _DistortionStrength: 20
-    - _DistortionStrengthScaled: 2
+    - _DistortionStrength: 30
+    - _DistortionStrengthScaled: 3
     - _DstBlend: 10
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
