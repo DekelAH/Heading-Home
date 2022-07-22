@@ -1,8 +1,4 @@
-using Assets.Scripts;
-using Assets.Scripts.Infastructure;
-using Assets.Scripts.View;
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour

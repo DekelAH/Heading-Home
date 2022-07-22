@@ -30,7 +30,6 @@ namespace Assets.Scripts
 
         #endregion
 
-
         #region Methods
 
         private void Start()
@@ -49,7 +48,7 @@ namespace Assets.Scripts
         private void SetCurrentLevel()
         {
             var sceneHandler = new SceneHandler();
-            _currentLevel.text = (sceneHandler.GetActiveScene + 1).ToString();
+            _currentLevel.text = (sceneHandler.GetActiveScene).ToString();
         }
 
         private void SetUpParams()

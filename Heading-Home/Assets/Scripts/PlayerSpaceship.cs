@@ -75,6 +75,16 @@ public class PlayerSpaceship : MonoBehaviour
 
     private void Start()
     {
+        RegisterEvents();
+    }
+
+    public void SpawnSpaceship(Transform spawnSpot, PlayerSpaceship spaceshipPrefab)
+    {
+        Instantiate(spaceshipPrefab, spawnSpot);
+    }
+
+    private void RegisterEvents()
+    {
         var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
         playerModel.OutOfFuel += OnOutOfFuel;
     }
@@ -90,6 +100,7 @@ public class PlayerSpaceship : MonoBehaviour
         StopThrustSound();
         _audioManager.PlaySound(CRASH_CLIP_NAME);
         PlayerExplosion();
+        RemoveColliderOnCrash();
         _movementManager.DisableBtns();
         StopSideFlames();
         StopRocketFlames();
@@ -161,16 +172,26 @@ public class PlayerSpaceship : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void ShowSpaceship()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void RemoveColliderOnCrash()
+    {
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+    }
+
     private void OnOutOfFuel(bool fuelStatus)
     {
         if (fuelStatus)
         {
-            return;
+            StopThrustSound();
+            StartOutOfFuelSequence();
         }
         else
         {
-            StopThrustSound();
-            StartOutOfFuelSequence();
+            return;
         }
     }
 
@@ -242,13 +263,6 @@ public class PlayerSpaceship : MonoBehaviour
     {
         _speedEffect.Stop();
     }
-
-    #endregion
-
-    #region Properties
-
-    public float ThrustSpeed => _thrustSpeed;
-    public float RotationSpeed => _rotationSpeed;
 
     #endregion
 }

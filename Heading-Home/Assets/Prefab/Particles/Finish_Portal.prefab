@@ -1247,8 +1247,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.3962634
-      minScalar: -1.3962634
+      scalar: 3.1415925
+      minScalar: -3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4834,7 +4834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _portalPrefabInstance: {fileID: 3647853206077715494}
-  _portalSizeChangeDuration: 1.5
+  _sizeChangeDuration: 1.5
   _finishEffect: {fileID: 3647853205750218983}
   _finishShockwave: {fileID: 3647853204824559319}
 --- !u!1001 &4670234120458088903

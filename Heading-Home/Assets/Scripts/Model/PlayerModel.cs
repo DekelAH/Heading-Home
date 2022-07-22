@@ -49,7 +49,7 @@ namespace Assets.Scripts.Model
         {
             if (_fuelAmount <= 0)
             {
-                OutOfFuel?.Invoke(false);
+                OutOfFuel?.Invoke(true);
             }
             else
             {

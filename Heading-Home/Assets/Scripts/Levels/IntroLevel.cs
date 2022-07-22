@@ -14,6 +14,9 @@ public class IntroLevel : MonoBehaviour
     private Animator _playerSpaceshipAnim;
 
     [SerializeField]
+    private LevelLoader _levelLoader;
+
+    [SerializeField]
     private float _moveSpeed;
 
     #endregion
@@ -27,16 +30,16 @@ public class IntroLevel : MonoBehaviour
 
     private void Update()
     {
-        PlayRocketFlames();
+        PlayRocketFlamesByIntroSteps();
     }
 
     private void PlayerSpaceshipIntroAnimation(float speed)
     {
-        _playerSpaceshipAnim.Play("SpaceshipIntroAnim");
         _playerSpaceshipAnim.speed = speed;
+        _playerSpaceshipAnim.Play("SpaceshipIntroAnim");
     }
 
-    private void PlayRocketFlames()
+    private void PlayRocketFlamesByIntroSteps()
     {
         if (_playerSpaceship.transform.position.y < _spaceshipPath[5].position.y && _playerSpaceship.transform.position.y > _spaceshipPath[6].position.y)
         {

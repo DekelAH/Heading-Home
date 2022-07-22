@@ -11,7 +11,7 @@ namespace Assets.Scripts.View
         private Object _portalPrefabInstance;
 
         [SerializeField]
-        private float _portalSizeChangeDuration;
+        private float _sizeChangeDuration;
 
         [SerializeField]
         private ParticleSystem _finishEffect;
@@ -48,7 +48,7 @@ namespace Assets.Scripts.View
 
             while (timeScale < 1)
             {
-                timeScale += Time.deltaTime * _portalSizeChangeDuration;
+                timeScale += Time.deltaTime * _sizeChangeDuration;
                 _portal.transform.localScale = Vector3.Lerp(startSize, targetSize, timeScale);
 
                 yield return null;
@@ -58,6 +58,21 @@ namespace Assets.Scripts.View
             {
                 _finishEffect.Play();
                 _finishShockwave.Play();
+            }
+        }
+
+        public IEnumerator LerpPortalGrowSize()
+        {
+            var targetSize = new Vector3(1.5f, 1.5f, 1.5f);
+            var startSize = Vector3.zero;
+            var timeScale = 0f;
+
+            while (timeScale < 1)
+            {
+                timeScale += Time.deltaTime * _sizeChangeDuration;
+                _portal.transform.localScale = Vector3.Lerp(startSize, targetSize, timeScale);
+
+                yield return null;
             }
         }
 

@@ -16,7 +16,10 @@ namespace Assets.Scripts.Levels
         private PlayerSpaceship _playerSpaceship;
 
         [SerializeField]
-        private PortalHandler _portalHandler;
+        private PortalHandler _finishPortal;
+
+        [SerializeField]
+        private PortalHandler _startPortal;
 
         [SerializeField]
         private Spawner _spawner;
@@ -42,6 +45,7 @@ namespace Assets.Scripts.Levels
         {
             RegisterEvents();
             ActivateSpawner();
+            StartLevel();
         }
 
         private void OnDestroy()
@@ -76,8 +80,22 @@ namespace Assets.Scripts.Levels
             if (_isPlayerWin)
             {
                 ActivateNextLevel(_delayAfterFinish);
-                StartCoroutine(_portalHandler.LerpPortalShrinkSize());
+                StartCoroutine(_finishPortal.LerpPortalShrinkSize());
                 _playerSpaceship.HideSpaceship();
+            }
+        }
+
+        private void StartLevel()
+        {
+            if (_startPortal != null)
+            {
+                _playerSpaceship.HideSpaceship();
+                StartCoroutine(_startPortal.LerpPortalGrowSize());
+                _playerSpaceship.ShowSpaceship();
+            }
+            else
+            {
+                return;
             }
         }
 
