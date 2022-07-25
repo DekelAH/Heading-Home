@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3184094918163226801}
   - component: {fileID: 1218487541707883634}
   - component: {fileID: 1218487541707883645}
-  - component: {fileID: 7486553101757280264}
   m_Layer: 0
   m_Name: Player Spaceship
   m_TagString: Player
@@ -153,19 +152,6 @@ MonoBehaviour:
   _leftRocketFlame: {fileID: 3430656191661724734}
   _rightRocketFlame: {fileID: 4555292905729222727}
   _speedEffect: {fileID: 0}
---- !u!114 &7486553101757280264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3521579532561069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae55862e777ca6a4eb5ec754fd029259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerSpaceship: {fileID: 1218487541707883645}
 --- !u!1 &384872221864079261
 GameObject:
   m_ObjectHideFlags: 0

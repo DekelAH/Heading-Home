@@ -1,10 +1,18 @@
 using Assets.Scripts.Infastructure;
 using Assets.Scripts.View.Movement_Btns;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpaceship : MonoBehaviour
 {
+    #region Events
+
+    public event Action<bool> PlayerCrashed;
+    public event Action<bool> PlayerWin;
+
+    #endregion
+
     #region Editor
 
     [Header("Movement")]
@@ -57,12 +65,17 @@ public class PlayerSpaceship : MonoBehaviour
     private const string THRUST_CLIP_NAME = "ThrustAudio";
     private const string OUT_OF_FUEL_CLIP_NAME = "OutOfFuelAudio";
 
+    private const string FRIENDLY_TAG = "Friendly";
+    private const string FINISH_TAG = "Finish";
+
     #endregion
 
     #region Fields
 
-    private readonly List<Transform> _childrenTransform = new List<Transform>();
     private AudioManager _audioManager;
+
+    private readonly List<Transform> _childrenTransform = new List<Transform>();
+    private bool _isIdle = false;
 
     #endregion
 
@@ -76,6 +89,48 @@ public class PlayerSpaceship : MonoBehaviour
     private void Start()
     {
         RegisterEvents();
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case FINISH_TAG:
+                StartFinishSequence();
+                break;
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (_isIdle)
+        {
+            return;
+        }
+
+        switch (collision.gameObject.tag)
+        {
+            case FRIENDLY_TAG:
+                Debug.Log("Friendly!!!!");
+                break;
+            default:
+                StartCrashSequence();
+                break;
+        }
+    }
+
+    private void StartCrashSequence()
+    {
+        _isIdle = true;
+        PlayerCrashed?.Invoke(true);
+        CrashSequence();
+    }
+
+    private void StartFinishSequence()
+    {
+        _isIdle = true;
+        PlayerWin?.Invoke(true);
+        FinishSequence();
     }
 
     public void SpawnSpaceship(Transform spawnSpot, PlayerSpaceship spaceshipPrefab)
@@ -98,7 +153,12 @@ public class PlayerSpaceship : MonoBehaviour
     {
         StopOutOfFuelSound();
         StopThrustSound();
-        _audioManager.PlaySound(CRASH_CLIP_NAME);
+
+        if (_audioManager != null)
+        {
+            _audioManager.PlaySound(CRASH_CLIP_NAME);
+        }
+
         PlayerExplosion();
         RemoveColliderOnCrash();
         _movementManager.DisableBtns();
@@ -109,7 +169,10 @@ public class PlayerSpaceship : MonoBehaviour
 
     public void FinishSequence()
     {
-        _audioManager.PlaySound(FINISH_CLIP_NAME);
+        if (_audioManager != null)
+        {
+            _audioManager.PlaySound(FINISH_CLIP_NAME);
+        }
         StopSideFlames();
         StopRocketFlames();
         _movementManager.DisableBtns();
@@ -203,27 +266,55 @@ public class PlayerSpaceship : MonoBehaviour
 
     public void CheckThrustSoundCondition()
     {
-        if (!_audioManager.GetAudioSource(THRUST_CLIP_NAME).isPlaying)
+        if (_audioManager != null)
         {
-            _audioManager.PlaySoundOneShot(THRUST_CLIP_NAME);
+            if (!_audioManager.GetAudioSource(THRUST_CLIP_NAME).isPlaying)
+            {
+                _audioManager.PlaySoundOneShot(THRUST_CLIP_NAME);
+            }
+        }
+        else
+        {
+            return;
         }
     }
 
     public void StopThrustSound()
     {
-        _audioManager.StopSound(THRUST_CLIP_NAME);
+        if (_audioManager != null)
+        {
+            _audioManager.StopSound(THRUST_CLIP_NAME);
+        }
+        else
+        {
+            return;
+        }
     }
 
     private void StopOutOfFuelSound()
     {
-        _audioManager.StopSound(OUT_OF_FUEL_CLIP_NAME);
+        if (_audioManager != null)
+        {
+            _audioManager.StopSound(OUT_OF_FUEL_CLIP_NAME);
+        }
+        else
+        {
+            return;
+        }
     }
 
     private void CheckOutOfFuelSoundCondition()
     {
-        if (!_audioManager.GetAudioSource(OUT_OF_FUEL_CLIP_NAME).isPlaying)
+        if (_audioManager != null)
         {
-            _audioManager.PlaySoundOneShot(OUT_OF_FUEL_CLIP_NAME);
+            if (!_audioManager.GetAudioSource(OUT_OF_FUEL_CLIP_NAME).isPlaying)
+            {
+                _audioManager.PlaySoundOneShot(OUT_OF_FUEL_CLIP_NAME);
+            }
+        }
+        else
+        {
+            return;
         }
     }
 

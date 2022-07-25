@@ -13,7 +13,13 @@ namespace Assets.Scripts.Factories
 
         #region Methods
 
-        public virtual GameObject CreateItem(Vector3 spawnSpot)
+        public GameObject CreateItem(Vector3 spawnSpot)
+        {
+            var item = CreateItemInternal(spawnSpot);
+            return item;
+        }
+
+        private GameObject CreateItemInternal(Vector3 spawnSpot)
         {
             var itemInstance = Instantiate(_itemPrefabRef, spawnSpot, Quaternion.identity) as GameObject;
             return itemInstance;

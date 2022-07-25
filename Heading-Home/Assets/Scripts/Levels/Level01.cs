@@ -1,25 +1,16 @@
 ﻿using Assets.Scripts.Infastructure;
-using Assets.Scripts.View;
+using Assets.Scripts.Model;
 using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Levels
 {
-    public class Level : MonoBehaviour
+    public class Level01 : MonoBehaviour
     {
         #region Editor
 
         [SerializeField]
-        private CollisionHandler _collisionHandler;
-
-        [SerializeField]
-        private PlayerSpaceship _playerSpaceship;
-
-        [SerializeField]
-        private PortalHandler _finishPortal;
-
-        [SerializeField]
-        private PortalHandler _startPortal;
+        private LevelModel _levelModel;
 
         [SerializeField]
         private Spawner _spawner;
@@ -45,13 +36,12 @@ namespace Assets.Scripts.Levels
         {
             RegisterEvents();
             ActivateSpawner();
-            StartLevel();
         }
 
         private void OnDestroy()
         {
-            _collisionHandler.PlayerCrashed -= OnPlayerCrash;
-            _collisionHandler.PlayerWin -= OnPlayerWin;
+            _levelModel.PlaySpaceshipPrefab.PlayerCrashed -= OnPlayerCrash;
+            _levelModel.PlaySpaceshipPrefab.PlayerWin -= OnPlayerWin;
         }
 
         private void ActivateSpawner()
@@ -61,8 +51,8 @@ namespace Assets.Scripts.Levels
 
         private void RegisterEvents()
         {
-            _collisionHandler.PlayerCrashed += OnPlayerCrash;
-            _collisionHandler.PlayerWin += OnPlayerWin;
+            _levelModel.PlaySpaceshipPrefab.PlayerCrashed += OnPlayerCrash;
+            _levelModel.PlaySpaceshipPrefab.PlayerWin += OnPlayerWin;
         }
 
         private void OnPlayerCrash(bool isPlayerCrash)
@@ -80,22 +70,8 @@ namespace Assets.Scripts.Levels
             if (_isPlayerWin)
             {
                 ActivateNextLevel(_delayAfterFinish);
-                StartCoroutine(_finishPortal.LerpPortalShrinkSize());
-                _playerSpaceship.HideSpaceship();
-            }
-        }
-
-        private void StartLevel()
-        {
-            if (_startPortal != null)
-            {
-                _playerSpaceship.HideSpaceship();
-                StartCoroutine(_startPortal.LerpPortalGrowSize());
-                _playerSpaceship.ShowSpaceship();
-            }
-            else
-            {
-                return;
+                StartCoroutine(_levelModel.FinishPortal.LerpPortalShrinkSize());
+                _levelModel.PlaySpaceshipPrefab.HideSpaceship();
             }
         }
 
