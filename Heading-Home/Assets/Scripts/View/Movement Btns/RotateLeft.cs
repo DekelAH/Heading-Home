@@ -5,14 +5,9 @@ namespace Assets.Scripts.View.Movement_Btns
 {
     public class RotateLeft : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        #region Editor
-
-        [SerializeField]
-        private PlayerSpaceship _playerSpaceship;
-
-        #endregion
-
         #region Fields
+
+        private PlayerSpaceship _playerSpaceship;
 
         private bool _isPressed = false;
 
@@ -36,6 +31,11 @@ namespace Assets.Scripts.View.Movement_Btns
             {
                 _playerSpaceship.StopSideFlames();
             }
+        }
+
+        public void SetUpPlayerSpaceship(PlayerSpaceship playerSpaceshipPrefab)
+        {
+            _playerSpaceship = playerSpaceshipPrefab;
         }
 
         public void OnPointerDown(PointerEventData eventData)

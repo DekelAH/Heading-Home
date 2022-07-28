@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f3fbda9a8f61d468bd2b1863a1c5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionHandler: {fileID: 0}
-  _playerSpaceship: {fileID: 0}
-  _portalHandler: {fileID: 0}
+  _levelModel: {fileID: 11400000, guid: fd0e6606fe79dad4c8f09af5055e13e9, type: 2}
+  _movementManager: {fileID: 0}
+  _followCam: {fileID: 0}
   _spawner: {fileID: 0}
   _delayAfterCrash: 3.5
   _delayAfterFinish: 2.8

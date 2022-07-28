@@ -19,6 +19,13 @@ namespace Assets.Scripts.View.Movement_Btns
 
         #region Methods
 
+        public void SetUpPlayerSpaceshipButtons(PlayerSpaceship playerSpaceshipInstance)
+        {
+            _thrust.SetUpPlayerSpaceship(playerSpaceshipInstance);
+            _rotateLeft.SetUpPlayerSpaceship(playerSpaceshipInstance);
+            _rotateRight.SetUpPlayerSpaceship(playerSpaceshipInstance);
+        }
+
         public void DisableBtns()
         {
             if (_thrust != null && _rotateLeft != null && _rotateRight != null)

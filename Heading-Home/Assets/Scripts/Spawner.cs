@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Factories;
-using System;
+using Assets.Scripts.View;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -15,6 +15,15 @@ namespace Assets.Scripts
         private Transform[] _obstacleFallerSpots;
 
         [SerializeField]
+        private Transform _playerSpawnSpot;
+
+        [SerializeField]
+        private Transform _finishPortalSpawnPoint;
+
+        [SerializeField]
+        private Transform _startPortalSpawnPoint;
+
+        [SerializeField]
         private FuelFactory _fuelFactory;
 
         [SerializeField]
@@ -28,6 +37,24 @@ namespace Assets.Scripts
         {
             SpawnObstacleFaller(_obstacleFallerSpots);
             SpawnFuel(_fuelSpawnSpots);
+        }
+
+        public PortalHandler SpawnFinishPortal(Vector3 spawnSpot, PortalHandler finishPortalPrefab)
+        {
+            var portal = Instantiate(finishPortalPrefab, spawnSpot, Quaternion.identity);
+            return portal;
+        }
+
+        public PortalHandler SpawnStartPortal(Vector3 spawnSpot, PortalHandler startPortalPrefab)
+        {
+            var portal = Instantiate(startPortalPrefab, spawnSpot, Quaternion.identity);
+            return portal;
+        }
+
+        public PlayerSpaceship SpawnSpaceship(Vector3 spawnSpot, PlayerSpaceship spaceshipPrefab)
+        {
+            var playerSpaceship = Instantiate(spaceshipPrefab, spawnSpot, Quaternion.identity);
+            return playerSpaceship;
         }
 
         private void SpawnFuel(Transform[] fuelSpawnSpots)
@@ -59,6 +86,14 @@ namespace Assets.Scripts
                 return;
             }
         }
+
+        #endregion
+
+        #region Properties
+
+        public Transform PlayerSpawnSpot => _playerSpawnSpot;
+        public Transform FinishPortalSpawnPoint => _finishPortalSpawnPoint;
+        public Transform StartPortalSpawnPoint => _startPortalSpawnPoint;
 
         #endregion
     }

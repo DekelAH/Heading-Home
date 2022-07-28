@@ -133,11 +133,6 @@ public class PlayerSpaceship : MonoBehaviour
         FinishSequence();
     }
 
-    public void SpawnSpaceship(Transform spawnSpot, PlayerSpaceship spaceshipPrefab)
-    {
-        Instantiate(spaceshipPrefab, spawnSpot);
-    }
-
     private void RegisterEvents()
     {
         var playerModel = PlayerModelProvider.Instance.GetPlayerModel;

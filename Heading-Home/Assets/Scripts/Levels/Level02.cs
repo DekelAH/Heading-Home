@@ -1,5 +1,8 @@
 ﻿using Assets.Scripts.Infastructure;
 using Assets.Scripts.Model;
+using Assets.Scripts.View;
+using Assets.Scripts.View.Movement_Btns;
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +14,12 @@ namespace Assets.Scripts.Levels
 
         [SerializeField]
         private LevelModel _levelModel;
+
+        [SerializeField]
+        private MovementManager _movementManager;
+
+        [SerializeField]
+        private CinemachineVirtualCamera _followCam;
 
         [SerializeField]
         private Spawner _spawner;
@@ -25,6 +34,10 @@ namespace Assets.Scripts.Levels
 
         #region Fields
 
+        private PlayerSpaceship _playerSpaceshipInstance;
+        private PortalHandler _finishPortalInstance;
+        private PortalHandler _startPortalInstance;
+
         private bool _isPlayerCrashed = false;
         private bool _isPlayerWin = false;
 
@@ -34,15 +47,32 @@ namespace Assets.Scripts.Levels
 
         private void Start()
         {
+            SetUpGameModels();
+            _movementManager.SetUpPlayerSpaceshipButtons(_playerSpaceshipInstance);
             RegisterEvents();
-            ActivateSpawner();
             StartLevel();
+            SetFollowCam();
+            ActivateSpawner();
         }
 
         private void OnDestroy()
         {
-            _levelModel.PlaySpaceshipPrefab.PlayerCrashed -= OnPlayerCrash;
-            _levelModel.PlaySpaceshipPrefab.PlayerWin -= OnPlayerWin;
+            _playerSpaceshipInstance.PlayerCrashed -= OnPlayerCrash;
+            _playerSpaceshipInstance.PlayerWin -= OnPlayerWin;
+        }
+
+        private void SetUpGameModels()
+        {
+            _playerSpaceshipInstance = _spawner.SpawnSpaceship(_spawner.PlayerSpawnSpot.position, _levelModel.PlaySpaceshipPrefab);
+            _startPortalInstance = _spawner.SpawnStartPortal(_spawner.StartPortalSpawnPoint.position, _levelModel.StartPortalPrefab);
+            _finishPortalInstance = _spawner.SpawnFinishPortal(_spawner.FinishPortalSpawnPoint.position, _levelModel.FinishPortalPrefab);
+        }
+        private void SetFollowCam()
+        {
+            if (_followCam != null)
+            {
+                _followCam.Follow = _playerSpaceshipInstance.transform;
+            }
         }
 
         private void ActivateSpawner()
@@ -52,8 +82,8 @@ namespace Assets.Scripts.Levels
 
         private void RegisterEvents()
         {
-            _levelModel.PlaySpaceshipPrefab.PlayerCrashed += OnPlayerCrash;
-            _levelModel.PlaySpaceshipPrefab.PlayerWin += OnPlayerWin;
+            _playerSpaceshipInstance.PlayerCrashed += OnPlayerCrash;
+            _playerSpaceshipInstance.PlayerWin += OnPlayerWin;
         }
 
         private void OnPlayerCrash(bool isPlayerCrash)
@@ -71,18 +101,16 @@ namespace Assets.Scripts.Levels
             if (_isPlayerWin)
             {
                 ActivateNextLevel(_delayAfterFinish);
-                StartCoroutine(_levelModel.FinishPortal.LerpPortalShrinkSize());
-                _levelModel.PlaySpaceshipPrefab.HideSpaceship();
+                StartCoroutine(_finishPortalInstance.LerpPortalShrinkSize());
+                _playerSpaceshipInstance.HideSpaceship();
             }
         }
 
         private void StartLevel()
         {
-            if (_levelModel.StartPortal != null)
+            if (_playerSpaceshipInstance != null)
             {
-                _levelModel.PlaySpaceshipPrefab.HideSpaceship();
-                StartCoroutine(_levelModel.StartPortal.LerpPortalGrowSize());
-                _levelModel.PlaySpaceshipPrefab.ShowSpaceship();
+                StartCoroutine(_startPortalInstance.LerpPortalGrowSize());
             }
             else
             {

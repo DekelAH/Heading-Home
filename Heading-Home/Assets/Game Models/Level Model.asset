@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Level Model
   m_EditorClassIdentifier: 
   _playSpaceshipPrefab: {fileID: 1218487541707883645, guid: 306883a802ca84b408b82432cbe1e68e, type: 3}
-  _playerCollisionHandlerPrefab: {fileID: 7486553101757280264, guid: 306883a802ca84b408b82432cbe1e68e, type: 3}
-  _finishPortal: {fileID: 1115891857, guid: 6c37e950ec6dca94bbb89df8128d944f, type: 3}
-  _startPortal: {fileID: 3963375945930551826, guid: 7357e7306a9f4004b8cc228ad502e524, type: 3}
+  _finishPortalPrefab: {fileID: 1115891857, guid: 6c37e950ec6dca94bbb89df8128d944f, type: 3}
+  _startPortalPrefab: {fileID: 3963375945930551826, guid: 7357e7306a9f4004b8cc228ad502e524, type: 3}

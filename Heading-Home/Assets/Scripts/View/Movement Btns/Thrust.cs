@@ -9,14 +9,13 @@ namespace Assets.Scripts.View.Movement_Btns
         #region Editor
 
         [SerializeField]
-        private PlayerSpaceship _playerSpaceship;
-
-        [SerializeField]
         private int _fuelToWithdraw;
 
         #endregion
 
         #region Fields
+
+        private PlayerSpaceship _playerSpaceship;
 
         private bool _isPressed = false;
 
@@ -42,6 +41,11 @@ namespace Assets.Scripts.View.Movement_Btns
                 _playerSpaceship.StopThrustSound();
                 _playerSpaceship.StopRocketFlames();
             }
+        }
+
+        public void SetUpPlayerSpaceship(PlayerSpaceship playerSpaceshipPrefab)
+        {
+            _playerSpaceship = playerSpaceshipPrefab;
         }
 
         public void OnPointerDown(PointerEventData eventData)

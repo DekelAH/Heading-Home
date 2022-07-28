@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3963375945930551826}
   m_Layer: 0
   m_Name: Start_Portal
-  m_TagString: Finish
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

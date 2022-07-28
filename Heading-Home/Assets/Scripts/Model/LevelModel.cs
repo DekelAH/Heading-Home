@@ -12,18 +12,18 @@ namespace Assets.Scripts.Model
         private PlayerSpaceship _playSpaceshipPrefab;
 
         [SerializeField]
-        private PortalHandler _finishPortal;
+        private PortalHandler _finishPortalPrefab;
 
         [SerializeField]
-        private PortalHandler _startPortal;
+        private PortalHandler _startPortalPrefab;
 
         #endregion
 
         #region Properties
 
         public PlayerSpaceship PlaySpaceshipPrefab => _playSpaceshipPrefab;
-        public PortalHandler FinishPortal => _finishPortal;
-        public PortalHandler StartPortal => _startPortal;
+        public PortalHandler FinishPortalPrefab => _finishPortalPrefab;
+        public PortalHandler StartPortalPrefab => _startPortalPrefab;
 
         #endregion
     }
