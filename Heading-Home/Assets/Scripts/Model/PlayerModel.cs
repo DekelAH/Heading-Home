@@ -18,9 +18,17 @@ namespace Assets.Scripts.Model
         [SerializeField]
         private float _fuelAmount;
 
+        [SerializeField]
+        private int _specialItem;
+
         #endregion
 
         #region Methods
+
+        public void AddSpecialItem(int specialItem)
+        {
+            _specialItem += specialItem;
+        }
 
         public void ResetFuel()
         {
