@@ -33,9 +33,9 @@ namespace Assets.Scripts.View.Movement_Btns
             }
         }
 
-        public void SetUpPlayerSpaceship(PlayerSpaceship playerSpaceshipPrefab)
+        public void SetUpPlayerSpaceship(PlayerSpaceship playerSpaceshipInstance)
         {
-            _playerSpaceship = playerSpaceshipPrefab;
+            _playerSpaceship = playerSpaceshipInstance;
         }
 
         public void OnPointerDown(PointerEventData eventData)

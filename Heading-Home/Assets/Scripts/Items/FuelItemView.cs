@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Items
 {
-    public class ItemView : MonoBehaviour
+    public class FuelItemView : MonoBehaviour
     {
         #region Editor
 
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Items
 
         private void OnFuelTrigger()
         {
-            var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+            var playerModel = PlayerModelProvider.Instance.GetCurrentSaveType;
             playerModel.AddFuel(_itemModel.Parameter);
             HideItem();
         }

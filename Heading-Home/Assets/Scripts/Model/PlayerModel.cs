@@ -18,17 +18,15 @@ namespace Assets.Scripts.Model
         [SerializeField]
         private float _fuelAmount;
 
-        [SerializeField]
-        private int _specialItem;
+        #endregion
+
+        #region Fields
+
+        private string _saveModelName = "";
 
         #endregion
 
         #region Methods
-
-        public void AddSpecialItem(int specialItem)
-        {
-            _specialItem += specialItem;
-        }
 
         public void ResetFuel()
         {
@@ -53,6 +51,11 @@ namespace Assets.Scripts.Model
             CheckFuelStatus();
         }
 
+        public void SetSaveModelName(string saveModelName)
+        {
+            _saveModelName = saveModelName;
+        }
+
         private void CheckFuelStatus()
         {
             if (_fuelAmount <= 0)
@@ -70,6 +73,7 @@ namespace Assets.Scripts.Model
         #region Properties
 
         public float Fuel => _fuelAmount;
+        public string SaveModelName => _saveModelName;
 
         #endregion
     }

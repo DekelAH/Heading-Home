@@ -20,6 +20,9 @@ namespace Assets.Scripts
         [SerializeField]
         private TextMeshProUGUI _currentLevel;
 
+        [SerializeField]
+        private TextMeshProUGUI _specialItemAmountText;
+
         #endregion
 
         #region Fields
@@ -48,7 +51,7 @@ namespace Assets.Scripts
         private void SetCurrentLevel()
         {
             var sceneHandler = new SceneHandler();
-            _currentLevel.text = (sceneHandler.GetActiveScene).ToString();
+            _currentLevel.text = (sceneHandler.GetActiveScene - 1).ToString();
         }
 
         private void SetUpParams()
@@ -66,12 +69,12 @@ namespace Assets.Scripts
         private void OnFuelChange(float fuel)
         {
             _targetFuel = fuel;
-            
+
             _timeScale = 0f;
 
             if (!_isLerpingFuel)
             {
-               StartCoroutine(LerpFuelBar());
+                StartCoroutine(LerpFuelBar());
             }
         }
 
@@ -94,7 +97,7 @@ namespace Assets.Scripts
 
         private PlayerModel SetPlayerModel()
         {
-            var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+            var playerModel = PlayerModelProvider.Instance.GetCurrentSaveType;
             return playerModel;
         }
 

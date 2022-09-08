@@ -74,3 +74,9 @@ MonoBehaviour:
     Volume: 0.3
     Pitch: 0.75
     AudioSource: {fileID: 0}
+  - Name: EarthQuakeAudio
+    Clip: {fileID: 8300000, guid: bc08ec2b8e0f97d4d850a6c258acae55, type: 3}
+    Loop: 0
+    Volume: 0.3
+    Pitch: 0.75
+    AudioSource: {fileID: 0}

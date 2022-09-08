@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.View;
+﻿using Assets.Scripts.Items;
+using Assets.Scripts.View;
 using UnityEngine;
 
 namespace Assets.Scripts.Model

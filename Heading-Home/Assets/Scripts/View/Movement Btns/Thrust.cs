@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Infastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.View.Movement_Btns
 {
@@ -43,16 +44,16 @@ namespace Assets.Scripts.View.Movement_Btns
             }
         }
 
-        public void SetUpPlayerSpaceship(PlayerSpaceship playerSpaceshipPrefab)
+        public void SetUpPlayerSpaceship(PlayerSpaceship playerSpaceshipInsatance)
         {
-            _playerSpaceship = playerSpaceshipPrefab;
+            _playerSpaceship = playerSpaceshipInsatance;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             _isPressed = true;
 
-            var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+            var playerModel = PlayerModelProvider.Instance.GetCurrentSaveType;
             playerModel.WithdrawFuel(_fuelToWithdraw);
         }
 

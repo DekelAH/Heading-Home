@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee1d38e0f94f72f459de8d7078fcec99, type: 3}
   m_Name: Fuel Model
   m_EditorClassIdentifier: 
-  _itemPrefabRef: {fileID: -2222527651426595775, guid: 638a25a0a8d9ee045892ecbb0ef38e3e, type: 3}
+  _itemPrefabRef: {fileID: 6956174235652383885, guid: 638a25a0a8d9ee045892ecbb0ef38e3e, type: 3}
   _parameter: 15

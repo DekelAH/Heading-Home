@@ -7,22 +7,22 @@ namespace Assets.Scripts.Infastructure
     {
         #region Consts
 
-        private const string PLAYER_MODEL_FILE_NAME = "Player Model";
+        private const string SAVE_SELECTOR_RESOURCE_NAME = "Save Type Selector";
 
         #endregion
 
         #region Fields
 
         private static PlayerModelProvider _instance;
-        private readonly PlayerModel _playerModel;
+        private static SaveTypeSelector _saveTypeSelector;
 
         #endregion
 
         #region Constructor
 
-        private PlayerModelProvider(string playerModelName)
+        private PlayerModelProvider(string saveTypeSelectorResourceName)
         {
-            _playerModel = Resources.Load<PlayerModel>(playerModelName);
+            _saveTypeSelector = Resources.Load<SaveTypeSelector>(saveTypeSelectorResourceName);
         }
 
         #endregion
@@ -35,15 +35,14 @@ namespace Assets.Scripts.Infastructure
             {
                 if (_instance == null)
                 {
-                    _instance = new PlayerModelProvider(PLAYER_MODEL_FILE_NAME);
+                    _instance = new PlayerModelProvider(SAVE_SELECTOR_RESOURCE_NAME);
                 }
 
                 return _instance;
             }
         }
 
-        public PlayerModel GetPlayerModel => _playerModel;
-
+        public PlayerModel GetCurrentSaveType => _saveTypeSelector.GetSaveType();
         #endregion
     }
 }

@@ -9,7 +9,7 @@ namespace Assets.Scripts.Model
         #region Editor
 
         [SerializeField]
-        private ItemView _itemPrefabRef;
+        private Object _itemPrefabRef;
 
         [SerializeField]
         private int _parameter;

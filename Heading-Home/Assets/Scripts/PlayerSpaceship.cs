@@ -25,9 +25,6 @@ public class PlayerSpaceship : MonoBehaviour
     [SerializeField]
     private Rigidbody _rigidBody;
 
-    [SerializeField]
-    private MovementManager _movementManager;
-
     [Header("Effects")]
     [SerializeField]
     private ParticleSystem _crashEffect;
@@ -73,6 +70,7 @@ public class PlayerSpaceship : MonoBehaviour
     #region Fields
 
     private AudioManager _audioManager;
+    private MovementManager _movementManager;
 
     private readonly List<Transform> _childrenTransform = new List<Transform>();
     private bool _isIdle = false;
@@ -84,6 +82,7 @@ public class PlayerSpaceship : MonoBehaviour
     private void Awake()
     {
         SetUpAudioManager();
+        SetUpMovementManager();
     }
 
     private void Start()
@@ -135,8 +134,13 @@ public class PlayerSpaceship : MonoBehaviour
 
     private void RegisterEvents()
     {
-        var playerModel = PlayerModelProvider.Instance.GetPlayerModel;
+        var playerModel = PlayerModelProvider.Instance.GetCurrentSaveType;
         playerModel.OutOfFuel += OnOutOfFuel;
+    }
+
+    private void SetUpMovementManager()
+    {
+        _movementManager = FindObjectOfType<MovementManager>();
     }
 
     private void SetUpAudioManager()
