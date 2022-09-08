@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: Player Model
   m_EditorClassIdentifier: 
   _fuelAmount: 100
-  _specialItemAmount: 0

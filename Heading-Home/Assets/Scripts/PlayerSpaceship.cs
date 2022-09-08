@@ -259,6 +259,11 @@ public class PlayerSpaceship : MonoBehaviour
 
     private void StartOutOfFuelSequence()
     {
+        if (_movementManager == null)
+        {
+            _movementManager = FindObjectOfType<MovementManager>();
+        }
+
         _movementManager.DisableBtns();
         CheckOutOfFuelSoundCondition();
     }

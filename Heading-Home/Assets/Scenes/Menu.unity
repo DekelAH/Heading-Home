@@ -2134,7 +2134,7 @@ GameObject:
   - component: {fileID: 758330350}
   - component: {fileID: 758330349}
   m_Layer: 0
-  m_Name: ExplanatoryArrow1 (1)
+  m_Name: Indicator3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4059,7 +4059,7 @@ GameObject:
   - component: {fileID: 1512018577}
   - component: {fileID: 1512018576}
   m_Layer: 0
-  m_Name: ExplanatoryArrow2 (1)
+  m_Name: Indicator4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4134,7 +4134,7 @@ GameObject:
   - component: {fileID: 1512709961}
   - component: {fileID: 1512709960}
   m_Layer: 0
-  m_Name: ExplanatoryArrow2
+  m_Name: Indicator2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5136,7 +5136,7 @@ GameObject:
   - component: {fileID: 1749364838}
   - component: {fileID: 1749364837}
   m_Layer: 0
-  m_Name: ExplanatoryArrow1
+  m_Name: Indicator1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

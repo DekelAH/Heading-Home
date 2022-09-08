@@ -635,6 +635,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8525249934851832891, guid: 83fb1375fb32e4c49a36399ca5a66aac, type: 3}
   m_PrefabInstance: {fileID: 285896622}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &299739647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2050864336242894605, guid: 43fc50cdcf19f6f429f42c71b24f8189, type: 3}
+  m_PrefabInstance: {fileID: 2050864334457572897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb89d72f512244b47a20a49010c26963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &354716125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3670,7 +3681,7 @@ PrefabInstance:
     - target: {fileID: 5914365943705904182, guid: f6e76738bae92114bb2e2d24d8898f3b, type: 3}
       propertyPath: _fuelFactory
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 299739647}
     - target: {fileID: 5914365943705904182, guid: f6e76738bae92114bb2e2d24d8898f3b, type: 3}
       propertyPath: _playerSpawnSpot
       value: 
