@@ -12,6 +12,11 @@ namespace Assets.Scripts
             return getCurrentScene;
         }
 
+        public void LoadMenuBtnLevel(int levelIndex)
+        {
+            SceneManager.LoadScene(levelIndex);
+        }
+
         public void ReloadLevel()
         {
             var currentSceneIndex = GetActiveSceneIndex();
@@ -29,6 +34,11 @@ namespace Assets.Scripts
             }
 
             SceneManager.LoadScene(nextSceneIndex);
+        }
+
+        public void LoadSpecificLevel(int levelIndex)
+        {
+            SceneManager.LoadScene(levelIndex);
         }
 
         #endregion

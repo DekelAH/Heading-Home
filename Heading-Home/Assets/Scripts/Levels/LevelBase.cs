@@ -124,6 +124,17 @@ namespace Assets.Scripts.Levels
                 ActivateNextLevel(_delayAfterFinish);
                 StartCoroutine(_finishPortalInstance.LerpPortalShrinkSize());
                 _playerSpaceshipInstance.HideSpaceship();
+                CheckLevelPass();
+            }
+        }
+
+        private void CheckLevelPass()
+        {
+            var sceneHandler = new SceneHandler();
+
+            if (sceneHandler.GetActiveScene >= PlayerPrefs.GetInt("levelsUnlocked"))
+            {
+                PlayerPrefs.SetInt("levelsUnlocked", sceneHandler.GetActiveScene + 1);
             }
         }
 

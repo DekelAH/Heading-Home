@@ -7,14 +7,47 @@ namespace Assets.Scripts.Levels
     {
         #region Editor
 
+        [SerializeField]
+        private Button[] _levelBtns;
+
+        #endregion
+
+        #region Fields
+
+        private int _levelsUnlocked;
+
         #endregion
 
         #region Methods
 
-        public void OnClickIntroBtn()
+        private void Start()
         {
-            var sceneManager = new SceneHandler();
-            sceneManager.NextLevel();
+            LockGameLevels();
+            UnlockLevels();
+        }
+
+        private void LockGameLevels()
+        {
+            for (int i = 0; i < _levelBtns.Length; i++)
+            {
+                _levelBtns[i].interactable = false;
+            }
+        }
+
+        private void UnlockLevels()
+        {
+            _levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 1);
+
+            for (int i = 0; i < _levelsUnlocked; i++)
+            {
+                _levelBtns[i].interactable = true;
+            }
+        }
+
+        public void OnClickLoadLevelBtn(int levelIndex)
+        {
+            var sceneHandler = new SceneHandler();
+            sceneHandler.LoadMenuBtnLevel(levelIndex);
         }
 
         #endregion

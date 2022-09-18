@@ -20,9 +20,6 @@ namespace Assets.Scripts
         [SerializeField]
         private TextMeshProUGUI _currentLevel;
 
-        [SerializeField]
-        private TextMeshProUGUI _specialItemAmountText;
-
         #endregion
 
         #region Fields
